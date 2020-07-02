@@ -1,0 +1,12 @@
+.Combat {
+  &__section {
+    height: 50vh;
+  }
+
+  &__view {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+  }
+}

@@ -58,3 +58,21 @@ table {
   left: 0;
   opacity: 1;
   z-index: 5; }
+
+.Battlemat__row {
+  display: flex;
+  justify-content: center; }
+
+.Battlemat__column {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black; }
+
+.Combat__section {
+  height: 50vh; }
+
+.Combat__view {
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }

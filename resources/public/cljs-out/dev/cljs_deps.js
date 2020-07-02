@@ -58,8 +58,9 @@ goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util',
 goog.addDependency("../wizard_lord/services/state/global.js", ['wizard_lord.services.state.global'], ['reagent.core', 'cljs.core']);
 goog.addDependency("../wizard_lord/services/state/textstate.js", ['wizard_lord.services.state.textstate'], ['cljs.core']);
 goog.addDependency("../wizard_lord/services/state/dispatcher.js", ['wizard_lord.services.state.dispatcher'], ['cljs.core', 'wizard_lord.services.state.global', 'wizard_lord.services.state.textstate']);
+goog.addDependency("../wizard_lord/data/battlemats/generic.js", ['wizard_lord.data.battlemats.generic'], ['cljs.core']);
 goog.addDependency("../wizard_lord/data/enemies/enemy.js", ['wizard_lord.data.enemies.enemy'], ['cljs.core']);
 goog.addDependency("../wizard_lord/data/enemies/Orc.js", ['wizard_lord.data.enemies.orc'], ['cljs.core', 'wizard_lord.data.enemies.enemy']);
-goog.addDependency("../wizard_lord/views/combat.js", ['wizard_lord.views.combat'], ['wizard_lord.services.state.dispatcher', 'cljs.core', 'wizard_lord.data.enemies.enemy', 'wizard_lord.data.enemies.orc']);
+goog.addDependency("../wizard_lord/views/combat.js", ['wizard_lord.views.combat'], ['wizard_lord.services.state.dispatcher', 'cljs.core', 'wizard_lord.data.battlemats.generic', 'wizard_lord.data.enemies.enemy', 'wizard_lord.data.enemies.orc']);
 goog.addDependency("../wizard_lord/core.js", ['wizard_lord.core'], ['goog.dom', 'wizard_lord.views.combat', 'wizard_lord.services.state.dispatcher', 'reagent.core', 'cljs.core', 'wizard_lord.services.state.global']);
 goog.addDependency("../wizard_lord/test_runner.js", ['wizard_lord.test_runner'], ['cljs.core', 'wizard_lord.core_test', 'figwheel.main.testing']);
