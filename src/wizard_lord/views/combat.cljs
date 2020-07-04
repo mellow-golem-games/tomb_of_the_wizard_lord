@@ -5,6 +5,9 @@
             [wizard-lord.components.combat.player :refer [Player]]
             [wizard-lord.data.battlemats.generic :refer [generic-battlemat]]))
 
+(defn handle-grid-click [e combat-state]
+  (if (:move-active combat-state) ; we also need to add a check to catch too large of movements
+    (handle-state-change {:type "handle-character-move" :value {:id (:current-initiative combat-state) :x (.-x (.-dataset e)) :y (.-y (.-dataset e))}})))
 
 (defn generate-combat-holder-size [mat]
   "figures out the css for the holder size since elements are absolutely positioned inside"
@@ -22,7 +25,7 @@
                                             innerRow ()]
                                            (if (= innerIndex (:columns mat))
                                              (reverse innerRow)
-                                             (recur (+ 1 innerIndex) (conj innerRow [:div.Battlemat__column {:data-x index :data-y innerIndex :key innerIndex}]))))])))))
+                                             (recur (+ 1 innerIndex) (conj innerRow [:div.Battlemat__column {:data-x innerIndex :data-y index :key innerIndex}]))))])))))
 
 ; TODO this should be set in state somewhere
 (def currentMat (:small-room  generic-battlemat))
@@ -34,7 +37,7 @@
   [:div.Combat.Page {:class active}
    [:div.Combat__view.Combat__section
     [:div.Combat__view__inner
-     [:div.Combat__view__inner__container {:style (generate-combat-holder-size currentMat)}
+     [:div.Combat__view__inner__container {:style (generate-combat-holder-size currentMat) :on-click #(handle-grid-click (.-target %)(:combat-view @app-state))}
       (for [row (generate-battlemat currentMat)]
         row)
       (doall (for [player (:players (:combat-view @app-state))]

@@ -24,5 +24,8 @@ return wizard_lord.services.state.global.update_active_view.call(null,wizard_lor
 cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"update-move-active",(function (action){
 return wizard_lord.services.state.combat.update_move_active.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
 }));
+cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"handle-character-move",(function (action){
+return wizard_lord.services.state.combat.handle_character_move.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
+}));
 
 //# sourceMappingURL=dispatcher.js.map
