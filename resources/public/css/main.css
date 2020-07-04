@@ -69,6 +69,13 @@ table {
   border: 1px solid black;
   box-sizing: border-box; }
 
+.Player {
+  width: 50px;
+  height: 50px;
+  position: absolute; }
+  .Player-moveActive {
+    filter: brightness(125%); }
+
 .Combat__section {
   height: 50vh; }
 
@@ -82,10 +89,3 @@ table {
     .Combat__view__inner__container {
       position: relative;
       margin: 0 auto; }
-
-.player {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 50px;
-  left: 50px; }

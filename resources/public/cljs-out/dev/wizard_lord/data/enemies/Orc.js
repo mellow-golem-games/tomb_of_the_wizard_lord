@@ -38,12 +38,12 @@ var this__4385__auto____$1 = this;
 return this__4385__auto____$1.cljs$core$ILookup$_lookup$arity$3(null,k__4386__auto__,null);
 });
 
-wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__4387__auto__,k13984,else__4388__auto__){
+wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__4387__auto__,k8585,else__4388__auto__){
 var self__ = this;
 var this__4387__auto____$1 = this;
-var G__13988 = k13984;
-var G__13988__$1 = (((G__13988 instanceof cljs.core.Keyword))?G__13988.fqn:null);
-switch (G__13988__$1) {
+var G__8589 = k8585;
+var G__8589__$1 = (((G__8589 instanceof cljs.core.Keyword))?G__8589.fqn:null);
+switch (G__8589__$1) {
 case "health":
 return self__.health;
 
@@ -57,7 +57,7 @@ return self__.defense;
 
 break;
 default:
-return cljs.core.get.call(null,self__.__extmap,k13984,else__4388__auto__);
+return cljs.core.get.call(null,self__.__extmap,k8585,else__4388__auto__);
 
 }
 });
@@ -66,10 +66,10 @@ wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IKVReduce$_kv_reduce$arity$
 var self__ = this;
 var this__4404__auto____$1 = this;
 return cljs.core.reduce.call(null,((function (this__4404__auto____$1){
-return (function (ret__4407__auto__,p__13989){
-var vec__13990 = p__13989;
-var k__4408__auto__ = cljs.core.nth.call(null,vec__13990,(0),null);
-var v__4409__auto__ = cljs.core.nth.call(null,vec__13990,(1),null);
+return (function (ret__4407__auto__,p__8590){
+var vec__8591 = p__8590;
+var k__4408__auto__ = cljs.core.nth.call(null,vec__8591,(0),null);
+var v__4409__auto__ = cljs.core.nth.call(null,vec__8591,(1),null);
 return f__4405__auto__.call(null,ret__4407__auto__,k__4408__auto__,v__4409__auto__);
 });})(this__4404__auto____$1))
 ,init__4406__auto__,this__4404__auto____$1);
@@ -106,10 +106,10 @@ return cljs.core.pr_sequential_writer.call(null,writer__4400__auto__,cljs.core.p
 return cljs.core.pr_sequential_writer.call(null,writer__4400__auto__,pr_pair__4402__auto__,"#wizard-lord.data.enemies.orc.Orc{",", ","}",opts__4401__auto__,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"health","health",-295520649),self__.health],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"attack","attack",1957061788),self__.attack],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"defense","defense",1755014992),self__.defense],null))], null),self__.__extmap));
 });
 
-wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__13983){
+wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__8584){
 var self__ = this;
-var G__13983__$1 = this;
-return (new cljs.core.RecordIter((0),G__13983__$1,3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"health","health",-295520649),new cljs.core.Keyword(null,"attack","attack",1957061788),new cljs.core.Keyword(null,"defense","defense",1755014992)], null),(cljs.core.truth_(self__.__extmap)?cljs.core._iterator.call(null,self__.__extmap):cljs.core.nil_iter.call(null))));
+var G__8584__$1 = this;
+return (new cljs.core.RecordIter((0),G__8584__$1,3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"health","health",-295520649),new cljs.core.Keyword(null,"attack","attack",1957061788),new cljs.core.Keyword(null,"defense","defense",1755014992)], null),(cljs.core.truth_(self__.__extmap)?cljs.core._iterator.call(null,self__.__extmap):cljs.core.nil_iter.call(null))));
 });
 
 wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__4383__auto__){
@@ -148,10 +148,10 @@ return h__4243__auto____$1;
 }
 });
 
-wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IEquiv$_equiv$arity$2 = (function (this13985,other13986){
+wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IEquiv$_equiv$arity$2 = (function (this8586,other8587){
 var self__ = this;
-var this13985__$1 = this;
-return (((!((other13986 == null)))) && ((this13985__$1.constructor === other13986.constructor)) && (cljs.core._EQ_.call(null,this13985__$1.health,other13986.health)) && (cljs.core._EQ_.call(null,this13985__$1.attack,other13986.attack)) && (cljs.core._EQ_.call(null,this13985__$1.defense,other13986.defense)) && (cljs.core._EQ_.call(null,this13985__$1.__extmap,other13986.__extmap)));
+var this8586__$1 = this;
+return (((!((other8587 == null)))) && ((this8586__$1.constructor === other8587.constructor)) && (cljs.core._EQ_.call(null,this8586__$1.health,other8587.health)) && (cljs.core._EQ_.call(null,this8586__$1.attack,other8587.attack)) && (cljs.core._EQ_.call(null,this8586__$1.defense,other8587.defense)) && (cljs.core._EQ_.call(null,this8586__$1.__extmap,other8587.__extmap)));
 });
 
 wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IMap$_dissoc$arity$2 = (function (this__4394__auto__,k__4395__auto__){
@@ -164,21 +164,21 @@ return (new wizard_lord.data.enemies.orc.Orc(self__.health,self__.attack,self__.
 }
 });
 
-wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__4392__auto__,k__4393__auto__,G__13983){
+wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__4392__auto__,k__4393__auto__,G__8584){
 var self__ = this;
 var this__4392__auto____$1 = this;
-var pred__13993 = cljs.core.keyword_identical_QMARK_;
-var expr__13994 = k__4393__auto__;
-if(cljs.core.truth_(pred__13993.call(null,new cljs.core.Keyword(null,"health","health",-295520649),expr__13994))){
-return (new wizard_lord.data.enemies.orc.Orc(G__13983,self__.attack,self__.defense,self__.__meta,self__.__extmap,null));
+var pred__8594 = cljs.core.keyword_identical_QMARK_;
+var expr__8595 = k__4393__auto__;
+if(cljs.core.truth_(pred__8594.call(null,new cljs.core.Keyword(null,"health","health",-295520649),expr__8595))){
+return (new wizard_lord.data.enemies.orc.Orc(G__8584,self__.attack,self__.defense,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__13993.call(null,new cljs.core.Keyword(null,"attack","attack",1957061788),expr__13994))){
-return (new wizard_lord.data.enemies.orc.Orc(self__.health,G__13983,self__.defense,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__8594.call(null,new cljs.core.Keyword(null,"attack","attack",1957061788),expr__8595))){
+return (new wizard_lord.data.enemies.orc.Orc(self__.health,G__8584,self__.defense,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__13993.call(null,new cljs.core.Keyword(null,"defense","defense",1755014992),expr__13994))){
-return (new wizard_lord.data.enemies.orc.Orc(self__.health,self__.attack,G__13983,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__8594.call(null,new cljs.core.Keyword(null,"defense","defense",1755014992),expr__8595))){
+return (new wizard_lord.data.enemies.orc.Orc(self__.health,self__.attack,G__8584,self__.__meta,self__.__extmap,null));
 } else {
-return (new wizard_lord.data.enemies.orc.Orc(self__.health,self__.attack,self__.defense,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__4393__auto__,G__13983),null));
+return (new wizard_lord.data.enemies.orc.Orc(self__.health,self__.attack,self__.defense,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__4393__auto__,G__8584),null));
 }
 }
 }
@@ -190,10 +190,10 @@ var this__4397__auto____$1 = this;
 return cljs.core.seq.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.MapEntry(new cljs.core.Keyword(null,"health","health",-295520649),self__.health,null)),(new cljs.core.MapEntry(new cljs.core.Keyword(null,"attack","attack",1957061788),self__.attack,null)),(new cljs.core.MapEntry(new cljs.core.Keyword(null,"defense","defense",1755014992),self__.defense,null))], null),self__.__extmap));
 });
 
-wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__4384__auto__,G__13983){
+wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__4384__auto__,G__8584){
 var self__ = this;
 var this__4384__auto____$1 = this;
-return (new wizard_lord.data.enemies.orc.Orc(self__.health,self__.attack,self__.defense,G__13983,self__.__extmap,self__.__hash));
+return (new wizard_lord.data.enemies.orc.Orc(self__.health,self__.attack,self__.defense,G__8584,self__.__extmap,self__.__hash));
 });
 
 wizard_lord.data.enemies.orc.Orc.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__4390__auto__,entry__4391__auto__){
@@ -230,15 +230,15 @@ return (new wizard_lord.data.enemies.orc.Orc(health,attack,defense,null,null,nul
 /**
  * Factory function for wizard-lord.data.enemies.orc/Orc, taking a map of keywords to field values.
  */
-wizard_lord.data.enemies.orc.map__GT_Orc = (function wizard_lord$data$enemies$orc$map__GT_Orc(G__13987){
-var extmap__4424__auto__ = (function (){var G__13996 = cljs.core.dissoc.call(null,G__13987,new cljs.core.Keyword(null,"health","health",-295520649),new cljs.core.Keyword(null,"attack","attack",1957061788),new cljs.core.Keyword(null,"defense","defense",1755014992));
-if(cljs.core.record_QMARK_.call(null,G__13987)){
-return cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,G__13996);
+wizard_lord.data.enemies.orc.map__GT_Orc = (function wizard_lord$data$enemies$orc$map__GT_Orc(G__8588){
+var extmap__4424__auto__ = (function (){var G__8597 = cljs.core.dissoc.call(null,G__8588,new cljs.core.Keyword(null,"health","health",-295520649),new cljs.core.Keyword(null,"attack","attack",1957061788),new cljs.core.Keyword(null,"defense","defense",1755014992));
+if(cljs.core.record_QMARK_.call(null,G__8588)){
+return cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,G__8597);
 } else {
-return G__13996;
+return G__8597;
 }
 })();
-return (new wizard_lord.data.enemies.orc.Orc(new cljs.core.Keyword(null,"health","health",-295520649).cljs$core$IFn$_invoke$arity$1(G__13987),new cljs.core.Keyword(null,"attack","attack",1957061788).cljs$core$IFn$_invoke$arity$1(G__13987),new cljs.core.Keyword(null,"defense","defense",1755014992).cljs$core$IFn$_invoke$arity$1(G__13987),null,cljs.core.not_empty.call(null,extmap__4424__auto__),null));
+return (new wizard_lord.data.enemies.orc.Orc(new cljs.core.Keyword(null,"health","health",-295520649).cljs$core$IFn$_invoke$arity$1(G__8588),new cljs.core.Keyword(null,"attack","attack",1957061788).cljs$core$IFn$_invoke$arity$1(G__8588),new cljs.core.Keyword(null,"defense","defense",1755014992).cljs$core$IFn$_invoke$arity$1(G__8588),null,cljs.core.not_empty.call(null,extmap__4424__auto__),null));
 });
 
 

@@ -2,6 +2,7 @@
 goog.provide('wizard_lord.services.state.dispatcher');
 goog.require('cljs.core');
 goog.require('wizard_lord.services.state.global');
+goog.require('wizard_lord.services.state.combat');
 goog.require('wizard_lord.services.state.textstate');
 if((typeof wizard_lord !== 'undefined') && (typeof wizard_lord.services !== 'undefined') && (typeof wizard_lord.services.state !== 'undefined') && (typeof wizard_lord.services.state.dispatcher !== 'undefined') && (typeof wizard_lord.services.state.dispatcher.handle_state_change !== 'undefined')){
 } else {
@@ -19,6 +20,9 @@ return new cljs.core.Keyword(null,"type","type",1174270348).cljs$core$IFn$_invok
 }
 cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"update-active-view",(function (action){
 return wizard_lord.services.state.global.update_active_view.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
+}));
+cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"update-move-active",(function (action){
+return wizard_lord.services.state.combat.update_move_active.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
 }));
 
 //# sourceMappingURL=dispatcher.js.map

@@ -13,7 +13,7 @@
 
 (defn hello-world []
   [:div
-   [Combat (:combat-view (:active-page @app-state))]])
+   [Combat (:combat-view (:active-page @app-state)) app-state]])
 
 (defn mount [el]
   (reagent/render-component [hello-world] el))

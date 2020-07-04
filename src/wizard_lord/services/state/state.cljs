@@ -1,9 +1,21 @@
 (ns wizard-lord.services.state.global
     (:require [reagent.core :as reagent :refer [atom]]))
 
+; we might consider moving this to a new file if it gets too much bigger
+(def combat-state
+  {:players [{:id 1:position {:x 0 :y 0}}]
+   :enemies []
+   :initiative-order [1]
+   :current-initiative 1
+   :move-active false}) 
+
+
+; initial rep of our overall state- it's not striclty neccessary to build it out like this
+; but I like to as it's a good place to reference all my current state options.
 (defonce app-state (atom {:text "Hello world!"
                           :active-page {:example-page false
-                                        :combat-view "active"}}))
+                                        :combat-view "active"}
+                          :combat-view combat-state}))
 
 ; TODO move these two scrolling functions into a state helper file
 ; Don't want them cluttering up this namespace
