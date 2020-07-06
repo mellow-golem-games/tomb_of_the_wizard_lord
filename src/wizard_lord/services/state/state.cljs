@@ -3,11 +3,11 @@
 
 ; we might consider moving this to a new file if it gets too much bigger
 (def combat-state
-  {:players [{:id 1:position {:x 0 :y 0}}]
+  {:players [{:id 1 :x 0 :y 0 :character {:move 5 :remaining 5}}] ; we will probably break out this character to prevent multi-references
    :enemies []
    :initiative-order [1]
    :current-initiative 1
-   :move-active false}) 
+   :move-active false})
 
 
 ; initial rep of our overall state- it's not striclty neccessary to build it out like this

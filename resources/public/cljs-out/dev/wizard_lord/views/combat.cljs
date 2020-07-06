@@ -7,7 +7,13 @@
 
 (defn handle-grid-click [e combat-state]
   (if (:move-active combat-state) ; we also need to add a check to catch too large of movements
-    (handle-state-change {:type "handle-character-move" :value {:id (:current-initiative combat-state) :x (.-x (.-dataset e)) :y (.-y (.-dataset e))}})))
+    (let [character (first (filter #(= (:id %) (:current-initiative combat-state)) (:players combat-state)))
+          x (.-x (.-dataset e))
+          y (.-y (.-dataset e))
+          moveDistance (* 5 (+ (js/Math.abs (- (:x character) x)) (js/Math.abs (- (:y character) y))))]
+      (if (> moveDistance (:move (:character character)))
+        (js/alert "Move too far!")
+        (handle-state-change {:type "handle-character-move" :value {:id (:current-initiative combat-state) :x x :y y}})))))
 
 (defn generate-combat-holder-size [mat]
   "figures out the css for the holder size since elements are absolutely positioned inside"

@@ -12,6 +12,5 @@
            character)) players))
 
 (defn handle-character-move [app-state payload]
-  ; (print payload)
   (swap! app-state update-in [:combat-view :players] update-character-positions payload))
 
