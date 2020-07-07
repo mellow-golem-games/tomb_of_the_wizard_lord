@@ -10,7 +10,7 @@
   (if (:move-active combat-state)
     (let [character (first (filter #(= (:id %) (:current-initiative combat-state)) (:players combat-state)))
           moveDistance (* 5 (+ (js/Math.abs (- (:x character) x)) (js/Math.abs (- (:y character) y))))]
-      (if (> moveDistance (:move (:character character)))
+      (if (> moveDistance (:remaining (:character character)))
         false
         true))
     true)) ; if not in movement we always return true - this will also prevent enemies from changing ui
@@ -21,9 +21,9 @@
           x (.-x (.-dataset e))
           y (.-y (.-dataset e))
           moveDistance (* 5 (+ (js/Math.abs (- (:x character) x)) (js/Math.abs (- (:y character) y))))]
-      (if (> moveDistance (:move (:character character)))
+      (if (> moveDistance (:remaining (:character character)))
         (js/alert "Move too far!")
-        (handle-state-change {:type "handle-character-move" :value {:id (:current-initiative combat-state) :x x :y y}})))))
+        (handle-state-change {:type "handle-character-move" :value {:id (:current-initiative combat-state) :x x :y y :movementVal (- (:remaining (:character character)) moveDistance)}})))))
 
 (defn generate-combat-holder-size [mat]
   "figures out the css for the holder size since elements are absolutely positioned inside"
@@ -47,20 +47,18 @@
 (def currentMat (:small-room  generic-battlemat))
 
 (defn Combat [active app-state]
-  ; (print (:players (:combat-view @app-state)))
-  ; (def enemy (Orc. 1 20 3))
-  ; (println (Enemy/attack enemy))
-  [:div.Combat.Page {:class active}
-   [:div.Combat__view.Combat__section
-    [:div.Combat__view__inner
-     [:div.Combat__view__inner__container {:style (generate-combat-holder-size currentMat) :on-click #(handle-grid-click (.-target %)(:combat-view @app-state))}
-      (for [row (generate-battlemat currentMat (:combat-view @app-state))]
-        row)
-      (doall (for [player (:players (:combat-view @app-state))]
-               ^{:key (:id player)} [Player player (:combat-view @app-state)]))]]]
-   [:div.Combat__history.Combat__Section
-    (if (:move-active (:combat-view @app-state))
-      [:button {:on-click #(handle-state-change {:type "update-move-active" :value false})} "Cancel Move"]
-      [:button {:on-click #(handle-state-change {:type "update-move-active" :value true})} "move"])
-    [:h2 "This is the history of rolls and such"]]])
+  (let [character (first (filter #(= (:id %) (:current-initiative (:combat-view @app-state))) (:players (:combat-view @app-state))))]
+    [:div.Combat.Page {:class active}
+     [:div.Combat__view.Combat__section
+      [:div.Combat__view__inner
+       [:div.Combat__view__inner__container {:style (generate-combat-holder-size currentMat) :on-click #(handle-grid-click (.-target %)(:combat-view @app-state))}
+        (for [row (generate-battlemat currentMat (:combat-view @app-state))]
+          row)
+        (doall (for [player (:players (:combat-view @app-state))]
+                 ^{:key (:id player)} [Player player (:combat-view @app-state)]))]]]
+     [:div.Combat__history.Combat__Section
+      (if (:move-active (:combat-view @app-state))
+        [:button {:on-click #(handle-state-change {:type "update-move-active" :value false})} "Cancel Move"]
+        [:button {:on-click #(handle-state-change {:type "update-move-active" :value true}) :disabled (= 0 (:remaining (:character character)))} "move"])
+      [:h2 "This is the history of rolls and such"]]]))
 
