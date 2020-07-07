@@ -3,6 +3,7 @@
             [wizard-lord.data.enemies.enemy :as Enemy]
             [wizard-lord.data.enemies.orc :refer [Orc]]
             [wizard-lord.components.combat.player :refer [Player]]
+            [wizard-lord.components.combat.enemy :refer [Enemy]]
             [wizard-lord.data.battlemats.generic :refer [generic-battlemat]]))
 
 
@@ -16,7 +17,8 @@
     true)) ; if not in movement we always return true - this will also prevent enemies from changing ui
 
 (defn handle-grid-click [e combat-state]
-  (if (:move-active combat-state) ; we also need to add a check to catch too large of movements
+
+  (if (and (:move-active combat-state) (not= (.-tagName e) "IMG")); we also need to add a check to catch too large of movements
     (let [character (first (filter #(= (:id %) (:current-initiative combat-state)) (:players combat-state)))
           x (.-x (.-dataset e))
           y (.-y (.-dataset e))
@@ -55,7 +57,9 @@
         (for [row (generate-battlemat currentMat (:combat-view @app-state))]
           row)
         (doall (for [player (:players (:combat-view @app-state))]
-                 ^{:key (:id player)} [Player player (:combat-view @app-state)]))]]]
+                 ^{:key (:id player)} [Player player (:combat-view @app-state)]))
+        (doall (for [enemy (:enemies (:combat-view @app-state))]
+                 ^{:key (:id enemy)} [Enemy enemy (:combat-view @app-state)]))]]]
      [:div.Combat__history.Combat__Section
       (if (:move-active (:combat-view @app-state))
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value false})} "Cancel Move"]
