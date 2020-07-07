@@ -5,6 +5,16 @@
             [wizard-lord.components.combat.player :refer [Player]]
             [wizard-lord.data.battlemats.generic :refer [generic-battlemat]]))
 
+
+(defn get-moveable-grid [x y combat-state]
+  (if (:move-active combat-state)
+    (let [character (first (filter #(= (:id %) (:current-initiative combat-state)) (:players combat-state)))
+          moveDistance (* 5 (+ (js/Math.abs (- (:x character) x)) (js/Math.abs (- (:y character) y))))]
+      (if (> moveDistance (:move (:character character)))
+        false
+        true))
+    true)) ; if not in movement we always return true - this will also prevent enemies from changing ui
+
 (defn handle-grid-click [e combat-state]
   (if (:move-active combat-state) ; we also need to add a check to catch too large of movements
     (let [character (first (filter #(= (:id %) (:current-initiative combat-state)) (:players combat-state)))
@@ -21,7 +31,7 @@
 
 
 ; this is my current implementation of the battle view.
-(defn generate-battlemat [mat]
+(defn generate-battlemat [mat combat-state]
   (loop [index 0
          rows []]
     (if (= index (:row mat))
@@ -31,7 +41,7 @@
                                             innerRow ()]
                                            (if (= innerIndex (:columns mat))
                                              (reverse innerRow)
-                                             (recur (+ 1 innerIndex) (conj innerRow [:div.Battlemat__column {:data-x innerIndex :data-y index :key innerIndex}]))))])))))
+                                             (recur (+ 1 innerIndex) (conj innerRow [:div.Battlemat__column {:data-x innerIndex :data-y index :key innerIndex :class (if (not (get-moveable-grid innerIndex index combat-state)) "Battlemat__column--oor")}]))))])))))
 
 ; TODO this should be set in state somewhere
 (def currentMat (:small-room  generic-battlemat))
@@ -44,7 +54,7 @@
    [:div.Combat__view.Combat__section
     [:div.Combat__view__inner
      [:div.Combat__view__inner__container {:style (generate-combat-holder-size currentMat) :on-click #(handle-grid-click (.-target %)(:combat-view @app-state))}
-      (for [row (generate-battlemat currentMat)]
+      (for [row (generate-battlemat currentMat (:combat-view @app-state))]
         row)
       (doall (for [player (:players (:combat-view @app-state))]
                ^{:key (:id player)} [Player player (:combat-view @app-state)]))]]]
