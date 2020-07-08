@@ -40,7 +40,8 @@ goog.addDependency("../wizard_lord/data/enemies/troll.js", ['wizard_lord.data.en
 goog.addDependency("../cljs/test.js", ['cljs.test'], ['cljs.core', 'cljs.pprint', 'clojure.string']);
 goog.addDependency("../figwheel/main/async_result.js", ['figwheel.main.async_result'], ['cljs.core', 'figwheel.repl']);
 goog.addDependency("../figwheel/main/testing.js", ['figwheel.main.testing'], ['goog.dom', 'cljs.core', 'cljs.test', 'clojure.string', 'figwheel.main.async_result']);
-goog.addDependency("../wizard_lord/services/state/combat.js", ['wizard_lord.services.state.combat'], ['cljs.core']);
+goog.addDependency("../wizard_lord/services/scripts/attacks.js", ['wizard_lord.services.scripts.attacks'], ['cljs.core']);
+goog.addDependency("../wizard_lord/services/state/combat.js", ['wizard_lord.services.state.combat'], ['cljs.core', 'wizard_lord.services.scripts.attacks']);
 goog.addDependency("../reagent/interop.js", ['reagent.interop'], ['cljs.core']);
 goog.addDependency("../reagent/debug.js", ['reagent.debug'], ['cljs.core']);
 goog.addDependency("../reagent/impl/util.js", ['reagent.impl.util'], ['reagent.interop', 'cljs.core', 'reagent.debug', 'clojure.string']);
@@ -55,7 +56,8 @@ goog.addDependency("../reagent/dom.js", ['reagent.dom'], ['reagent.impl.util', '
 goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util', 'reagent.interop', 'reagent.ratom', 'react', 'cljs.core', 'reagent.impl.template', 'reagent.impl.batching', 'reagent.impl.component', 'reagent.debug', 'reagent.dom']);
 goog.addDependency("../wizard_lord/services/state/global.js", ['wizard_lord.services.state.global'], ['reagent.core', 'cljs.core']);
 goog.addDependency("../wizard_lord/services/state/textstate.js", ['wizard_lord.services.state.textstate'], ['cljs.core']);
-goog.addDependency("../wizard_lord/services/state/dispatcher.js", ['wizard_lord.services.state.dispatcher'], ['wizard_lord.services.state.combat', 'cljs.core', 'wizard_lord.services.state.global', 'wizard_lord.services.state.textstate']);
+goog.addDependency("../wizard_lord/services/state/movement.js", ['wizard_lord.services.state.movement'], ['cljs.core']);
+goog.addDependency("../wizard_lord/services/state/dispatcher.js", ['wizard_lord.services.state.dispatcher'], ['wizard_lord.services.state.combat', 'cljs.core', 'wizard_lord.services.state.global', 'wizard_lord.services.state.textstate', 'wizard_lord.services.state.movement']);
 goog.addDependency("../wizard_lord/data/battlemats/generic.js", ['wizard_lord.data.battlemats.generic'], ['cljs.core']);
 goog.addDependency("../wizard_lord/components/combat/player.js", ['wizard_lord.components.combat.player'], ['cljs.core']);
 goog.addDependency("../wizard_lord/components/combat/enemy.js", ['wizard_lord.components.combat.enemy'], ['cljs.core']);

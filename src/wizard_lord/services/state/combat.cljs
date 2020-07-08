@@ -1,35 +1,17 @@
-(ns wizard-lord.services.state.combat)
+(ns wizard-lord.services.state.combat
+  (:require [wizard-lord.services.scripts.attacks :refer [resolve-attack-damage]]))
+
+(defn set-damage-to-enemy [enemies character enemyId] ; we can turn  tis into a vector for AOE maybe?
+  (map (fn [enemy]
+         (if (= (:id enemy) enemyId)
+           (assoc-in enemy [:character :health] (- (:health (:character enemy)) (resolve-attack-damage (:attack (:character character)) (:defence (:character enemy)))))
+           enemy)) enemies))
 
 
+(defn update-attack-active [app-state payload]
+  (swap! app-state update-in [:combat-view :attack-active] (fn [_] payload)))
 
-(defn update-move-active [app-state payload]
-  (swap! app-state update-in [:combat-view :move-active] (fn [_] payload)))
-
-(defn update-character-positions [players payload]
-  (map (fn [character]
-         (if (= (:id character) (:id payload))
-           (conj character {:x (:x payload) :y (:y payload)})
-           character)) players))
-
-(defn update-character-movement [players payload]
-  (map (fn [character]
-         (if (= (:id character) (:id payload))
-           (assoc-in character [:character :remaining] (:movementVal payload))
-           character)) players))
-
-; we make this separate so we can do movement reducing things separately
-(defn handle-character-move-reduce-value [app-state payload]
-  (swap! app-state update-in [:combat-view :players] update-character-movement payload))
-
-(defn handle-character-move-check-remaining [app-state payload]
-  (let [character (first (filter #(= (:id %) (:id payload)) (:players (:combat-view @app-state))))]
-    (if (= 0 (:remaining (:character character)))
-      (update-move-active app-state false))))
-
-(defn handle-character-move [app-state payload]
-  (swap! app-state update-in [:combat-view :players] update-character-positions payload)
-  (handle-character-move-reduce-value app-state payload)
-  (handle-character-move-check-remaining app-state payload)); not sure if I like this, probably make two handl-state-change requests
-
-
-
+(defn handle-character-attack [app-state payload]
+  "Payload: {:id to damage}"
+  (let [character (first (filter #(= (:id %) (:current-initiative (:combat-view @app-state))) (:players (:combat-view @app-state))))]
+    (swap! app-state update-in [:combat-view :enemies] set-damage-to-enemy character payload)))

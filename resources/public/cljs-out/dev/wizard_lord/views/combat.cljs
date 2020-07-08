@@ -16,16 +16,21 @@
         true))
     true)) ; if not in movement we always return true - this will also prevent enemies from changing ui
 
-(defn handle-grid-click [e combat-state]
+(defn handle-attack-action [e combat-state]
+  (handle-state-change {:type "handle-character-attack" :value (js.parseInt (.-id (.-dataset e)))}))
 
-  (if (and (:move-active combat-state) (not= (.-tagName e) "IMG")); we also need to add a check to catch too large of movements
-    (let [character (first (filter #(= (:id %) (:current-initiative combat-state)) (:players combat-state)))
-          x (.-x (.-dataset e))
-          y (.-y (.-dataset e))
-          moveDistance (* 5 (+ (js/Math.abs (- (:x character) x)) (js/Math.abs (- (:y character) y))))]
-      (if (> moveDistance (:remaining (:character character)))
-        (js/alert "Move too far!")
-        (handle-state-change {:type "handle-character-move" :value {:id (:current-initiative combat-state) :x x :y y :movementVal (- (:remaining (:character character)) moveDistance)}})))))
+
+(defn handle-grid-click [e combat-state]
+  (if (and (:attack-active combat-state) (= (.-tagName e) "IMG"))
+    (handle-attack-action e combat-state)
+    (if (and (:move-active combat-state) (not= (.-tagName e) "IMG")); we also need to add a check to catch too large of movements
+      (let [character (first (filter #(= (:id %) (:current-initiative combat-state)) (:players combat-state)))
+            x (.-x (.-dataset e))
+            y (.-y (.-dataset e))
+            moveDistance (* 5 (+ (js/Math.abs (- (:x character) x)) (js/Math.abs (- (:y character) y))))]
+        (if (> moveDistance (:remaining (:character character)))
+          (js/alert "Move too far!")
+          (handle-state-change {:type "handle-character-move" :value {:id (:current-initiative combat-state) :x x :y y :movementVal (- (:remaining (:character character)) moveDistance)}}))))))
 
 (defn generate-combat-holder-size [mat]
   "figures out the css for the holder size since elements are absolutely positioned inside"
@@ -49,6 +54,7 @@
 (def currentMat (:small-room  generic-battlemat))
 
 (defn Combat [active app-state]
+  (print @app-state)
   (let [character (first (filter #(= (:id %) (:current-initiative (:combat-view @app-state))) (:players (:combat-view @app-state))))]
     [:div.Combat.Page {:class active}
      [:div.Combat__view.Combat__section
@@ -64,5 +70,6 @@
       (if (:move-active (:combat-view @app-state))
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value false})} "Cancel Move"]
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value true}) :disabled (= 0 (:remaining (:character character)))} "move"])
+      [:button {:on-click #(handle-state-change {:type "update-attack-active" :value true})} "Attack"]
       [:h2 "This is the history of rolls and such"]]]))
 
