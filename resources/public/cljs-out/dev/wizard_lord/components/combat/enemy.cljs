@@ -5,6 +5,6 @@
 
 (defn Enemy [enemy combat-state]
   [:div.Enemy {:style {:left (* 50 (:x enemy)) :top (* 50 (:y enemy))}}
-   [:img {:src "./images/enemy.png" :data-id (:id enemy)}]
+   [:img {:src "./images/enemy.png" :data-id (:id enemy) :data-x (:x enemy) :data-y (:y enemy)}]
    [:div.Enemy.healthbar
     [:div.Enemy.healthbar__inner {:style {:width (get-remaining-health (:character enemy))}}]]])

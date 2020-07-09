@@ -78,6 +78,21 @@ table {
   position: absolute; }
   .Player-moveActive {
     filter: brightness(125%); }
+  .Player img {
+    width: 40px;
+    height: 40px; }
+  .Player .healthbar {
+    width: 40px;
+    height: 2px;
+    margin-left: 5px;
+    position: relative;
+    border: 1px solid black; }
+    .Player .healthbar__inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: red; }
 
 .Enemy {
   width: 50px;

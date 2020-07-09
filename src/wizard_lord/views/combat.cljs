@@ -1,5 +1,7 @@
 (ns wizard-lord.views.combat
   (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
+            [wizard-lord.services.scripts.helpers :refer [get-active-player]]
+            [wizard-lord.services.scripts.range :refer [is-attack-in-range?]]
             [wizard-lord.data.enemies.enemy :as Enemy]
             [wizard-lord.data.enemies.orc :refer [Orc]]
             [wizard-lord.components.combat.player :refer [Player]]
@@ -17,7 +19,10 @@
     true)) ; if not in movement we always return true - this will also prevent enemies from changing ui
 
 (defn handle-attack-action [e combat-state]
-  (handle-state-change {:type "handle-character-attack" :value (js.parseInt (.-id (.-dataset e)))}))
+  (let [character (get-active-player combat-state)]
+    (if (is-attack-in-range? character {:x (.-x (.-dataset e)) :y (.-y (.-dataset e))} (:range (:attack (:actions character))))
+      (handle-state-change {:type "handle-character-attack" :value (js.parseInt (.-id (.-dataset e)))})
+      (js/alert "Attack Out Of Range")))) ; TODO make these alerts better
 
 
 (defn handle-grid-click [e combat-state]
