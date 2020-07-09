@@ -11,6 +11,15 @@ return enemy;
 }
 }),enemies);
 });
+wizard_lord.services.state.combat.reduce_action_points_of_charater = (function wizard_lord$services$state$combat$reduce_action_points_of_charater(players,character,cost){
+return cljs.core.map.call(null,(function (player){
+if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(player),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(character))){
+return cljs.core.assoc_in.call(null,player,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"character","character",380652989),new cljs.core.Keyword(null,"remaining-action-points","remaining-action-points",-1961707422)], null),(new cljs.core.Keyword(null,"remaining-action-points","remaining-action-points",-1961707422).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"character","character",380652989).cljs$core$IFn$_invoke$arity$1(player)) - cost));
+} else {
+return player;
+}
+}),players);
+});
 wizard_lord.services.state.combat.update_attack_active = (function wizard_lord$services$state$combat$update_attack_active(app_state,payload){
 return cljs.core.swap_BANG_.call(null,app_state,cljs.core.update_in,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"combat-view","combat-view",585821215),new cljs.core.Keyword(null,"attack-active","attack-active",440570527)], null),(function (_){
 return payload;
@@ -18,10 +27,12 @@ return payload;
 });
 wizard_lord.services.state.combat.handle_character_attack = (function wizard_lord$services$state$combat$handle_character_attack(app_state,payload){
 
-var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__15050_SHARP_){
-return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__15050_SHARP_),new cljs.core.Keyword(null,"current-initiative","current-initiative",62014760).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))));
+var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__14216_SHARP_){
+return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__14216_SHARP_),new cljs.core.Keyword(null,"current-initiative","current-initiative",62014760).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))));
 }),new cljs.core.Keyword(null,"players","players",-1361554569).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state)))));
-return cljs.core.swap_BANG_.call(null,app_state,cljs.core.update_in,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"combat-view","combat-view",585821215),new cljs.core.Keyword(null,"enemies","enemies",2114285722)], null),wizard_lord.services.state.combat.set_damage_to_enemy,character,payload);
+cljs.core.swap_BANG_.call(null,app_state,cljs.core.update_in,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"combat-view","combat-view",585821215),new cljs.core.Keyword(null,"enemies","enemies",2114285722)], null),wizard_lord.services.state.combat.set_damage_to_enemy,character,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(payload));
+
+return cljs.core.swap_BANG_.call(null,app_state,cljs.core.update_in,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"combat-view","combat-view",585821215),new cljs.core.Keyword(null,"players","players",-1361554569)], null),wizard_lord.services.state.combat.reduce_action_points_of_charater,character,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(payload));
 });
 
 //# sourceMappingURL=combat.js.map

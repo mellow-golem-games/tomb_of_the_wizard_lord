@@ -20,9 +20,11 @@
 
 (defn handle-attack-action [e combat-state]
   (let [character (get-active-player combat-state)]
-    (if (is-attack-in-range? character {:x (.-x (.-dataset e)) :y (.-y (.-dataset e))} (:range (:attack (:actions character))))
-      (handle-state-change {:type "handle-character-attack" :value (js.parseInt (.-id (.-dataset e)))})
-      (js/alert "Attack Out Of Range")))) ; TODO make these alerts better
+    (if (and ; TODO as this gets large we should break it out into a (is-valid-attack?) function which calls all this
+          (is-attack-in-range? character {:x (.-x (.-dataset e)) :y (.-y (.-dataset e))} (:range (:attack (:actions character))))
+          (<= (:cost (:attack (:actions character))) (:remaining-action-points (:character character))))
+      (handle-state-change {:type "handle-character-attack" :value {:id (js.parseInt (.-id (.-dataset e))) :cost (:cost (:attack (:actions character)))}})
+      (js/alert "Attack Out Of Range Or Points")))) ; TODO make these alerts better
 
 
 (defn handle-grid-click [e combat-state]
@@ -77,5 +79,6 @@
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value true}) :disabled (= 0 (:remaining (:character character)))} "move"])
       [:button {:on-click #(do (handle-state-change {:type "update-move-active" :value false})
                                (handle-state-change {:type "update-attack-active" :value true}))} "Attack"]
+      [:p (str "Action Points " (:remaining-action-points (:character character)) " of " (:max-action-points (:character character)))]
       [:h2 "This is the history of rolls and such"]]]))
 
