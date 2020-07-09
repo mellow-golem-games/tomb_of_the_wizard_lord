@@ -70,6 +70,7 @@
       (if (:move-active (:combat-view @app-state))
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value false})} "Cancel Move"]
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value true}) :disabled (= 0 (:remaining (:character character)))} "move"])
-      [:button {:on-click #(handle-state-change {:type "update-attack-active" :value true})} "Attack"]
+      [:button {:on-click #(do (handle-state-change {:type "update-move-active" :value false})
+                               (handle-state-change {:type "update-attack-active" :value true}))} "Attack"]
       [:h2 "This is the history of rolls and such"]]]))
 

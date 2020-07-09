@@ -79,6 +79,26 @@ table {
   .Player-moveActive {
     filter: brightness(125%); }
 
+.Enemy {
+  width: 50px;
+  height: 50px;
+  position: absolute; }
+  .Enemy img {
+    width: 40px;
+    height: 40px; }
+  .Enemy .healthbar {
+    width: 40px;
+    height: 2px;
+    margin-left: 5px;
+    position: relative;
+    border: 1px solid black; }
+    .Enemy .healthbar__inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: red; }
+
 .Combat__section {
   height: 50vh; }
 

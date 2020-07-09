@@ -4,7 +4,7 @@
 ; we might consider moving this to a new file if it gets too much bigger
 (def combat-state
   {:players [{:id 1 :x 0 :y 0 :character {:move 20 :remaining 20 :health 50 :defence 5 :attack 15}}] ; we will probably break out this character to prevent multi-references
-   :enemies [{:id 1 :x 2 :y 2 :character {:move 20 :remaining 20 :health 10 :defence 10 :attack 5}}]
+   :enemies [{:id 1 :x 2 :y 2 :character {:move 20 :remaining 20 :max-health 10 :health 10 :defence 10 :attack 5}}]
    :initiative-order [1]
    :current-initiative 1
    :move-active false
