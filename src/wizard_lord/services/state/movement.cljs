@@ -16,6 +16,17 @@
            (assoc-in character [:character :remaining] (:movementVal payload))
            character)) players))
 
+(defn reset-character-movement [players character]
+  (map (fn [player]
+         (if (= (:id player) (:id character))
+           (assoc-in player [:character :remaining] (:move (:character character)))
+           player)) players))
+
+
+
+(defn handle-reset-character-movement [app-state payload]
+  (swap! app-state update-in [:combat-view :players] reset-character-movement payload))
+
 ; we make this separate so we can do movement reducing things separately
 (defn handle-character-move-reduce-value [app-state payload]
   (swap! app-state update-in [:combat-view :players] update-character-movement payload))

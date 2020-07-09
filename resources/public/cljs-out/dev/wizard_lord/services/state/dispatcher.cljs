@@ -1,7 +1,7 @@
 (ns wizard-lord.services.state.dispatcher
   (:require [wizard-lord.services.state.global :refer [app-state update-active-view]]
-            [wizard-lord.services.state.movement :refer [update-move-active handle-character-move update-attack-active]]
-            [wizard-lord.services.state.combat :refer [update-attack-active handle-character-attack]]
+            [wizard-lord.services.state.movement :refer [update-move-active handle-character-move update-attack-active handle-reset-character-movement]]
+            [wizard-lord.services.state.combat :refer [update-attack-active handle-character-attack handle-reset-character-action-points update-initiative-value]]
             [wizard-lord.services.state.textstate :refer [update-state-text]]))
 
 ; As we need more mutations for state we can add them here - Handle state change
@@ -28,3 +28,11 @@
 (defmethod handle-state-change "handle-character-attack"
   [action]
   (handle-character-attack app-state (:value action)))
+
+
+; END TURN STUFF
+(defmethod handle-state-change "handle-end-turn"
+  [action]
+  (handle-reset-character-action-points app-state (:value action))
+  (handle-reset-character-movement app-state (:value action))
+  (update-initiative-value app-state))

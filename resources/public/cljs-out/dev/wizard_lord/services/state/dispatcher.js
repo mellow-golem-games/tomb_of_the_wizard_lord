@@ -34,5 +34,12 @@ return wizard_lord.services.state.combat.update_attack_active.call(null,wizard_l
 cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"handle-character-attack",(function (action){
 return wizard_lord.services.state.combat.handle_character_attack.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
 }));
+cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"handle-end-turn",(function (action){
+wizard_lord.services.state.combat.handle_reset_character_action_points.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
+
+wizard_lord.services.state.movement.handle_reset_character_movement.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
+
+return wizard_lord.services.state.combat.update_initiative_value.call(null,wizard_lord.services.state.global.app_state);
+}));
 
 //# sourceMappingURL=dispatcher.js.map

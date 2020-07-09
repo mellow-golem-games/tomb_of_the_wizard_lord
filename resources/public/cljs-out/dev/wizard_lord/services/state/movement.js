@@ -24,12 +24,24 @@ return character;
 }
 }),players);
 });
+wizard_lord.services.state.movement.reset_character_movement = (function wizard_lord$services$state$movement$reset_character_movement(players,character){
+return cljs.core.map.call(null,(function (player){
+if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(player),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(character))){
+return cljs.core.assoc_in.call(null,player,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"character","character",380652989),new cljs.core.Keyword(null,"remaining","remaining",-138926777)], null),new cljs.core.Keyword(null,"move","move",-2110884309).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"character","character",380652989).cljs$core$IFn$_invoke$arity$1(character)));
+} else {
+return player;
+}
+}),players);
+});
+wizard_lord.services.state.movement.handle_reset_character_movement = (function wizard_lord$services$state$movement$handle_reset_character_movement(app_state,payload){
+return cljs.core.swap_BANG_.call(null,app_state,cljs.core.update_in,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"combat-view","combat-view",585821215),new cljs.core.Keyword(null,"players","players",-1361554569)], null),wizard_lord.services.state.movement.reset_character_movement,payload);
+});
 wizard_lord.services.state.movement.handle_character_move_reduce_value = (function wizard_lord$services$state$movement$handle_character_move_reduce_value(app_state,payload){
 return cljs.core.swap_BANG_.call(null,app_state,cljs.core.update_in,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"combat-view","combat-view",585821215),new cljs.core.Keyword(null,"players","players",-1361554569)], null),wizard_lord.services.state.movement.update_character_movement,payload);
 });
 wizard_lord.services.state.movement.handle_character_move_check_remaining = (function wizard_lord$services$state$movement$handle_character_move_check_remaining(app_state,payload){
-var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__14011_SHARP_){
-return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__14011_SHARP_),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(payload));
+var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__14844_SHARP_){
+return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__14844_SHARP_),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(payload));
 }),new cljs.core.Keyword(null,"players","players",-1361554569).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state)))));
 if(cljs.core._EQ_.call(null,(0),new cljs.core.Keyword(null,"remaining","remaining",-138926777).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"character","character",380652989).cljs$core$IFn$_invoke$arity$1(character)))){
 return wizard_lord.services.state.movement.update_move_active.call(null,app_state,false);

@@ -6,7 +6,8 @@
             [wizard-lord.data.enemies.orc :refer [Orc]]
             [wizard-lord.components.combat.player :refer [Player]]
             [wizard-lord.components.combat.enemy :refer [Enemy]]
-            [wizard-lord.data.battlemats.generic :refer [generic-battlemat]]))
+            [wizard-lord.data.battlemats.generic :refer [generic-battlemat]]
+            [wizard-lord.services.state.initiative :refer [handle-end-turn]]))
 
 
 (defn get-moveable-grid [x y combat-state]
@@ -79,6 +80,7 @@
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value true}) :disabled (= 0 (:remaining (:character character)))} "move"])
       [:button {:on-click #(do (handle-state-change {:type "update-move-active" :value false})
                                (handle-state-change {:type "update-attack-active" :value true}))} "Attack"]
+      [:button {:on-click #(handle-end-turn character)} "End Turn"]
       [:p (str "Action Points " (:remaining-action-points (:character character)) " of " (:max-action-points (:character character)))]
       [:h2 "This is the history of rolls and such"]]]))
 
