@@ -42,6 +42,7 @@ goog.addDependency("../figwheel/main/async_result.js", ['figwheel.main.async_res
 goog.addDependency("../figwheel/main/testing.js", ['figwheel.main.testing'], ['goog.dom', 'cljs.core', 'cljs.test', 'clojure.string', 'figwheel.main.async_result']);
 goog.addDependency("../wizard_lord/services/scripts/attacks.js", ['wizard_lord.services.scripts.attacks'], ['cljs.core']);
 goog.addDependency("../wizard_lord/services/state/combat.js", ['wizard_lord.services.state.combat'], ['cljs.core', 'wizard_lord.services.scripts.attacks']);
+goog.addDependency("../wizard_lord/services/state/enemy.js", ['wizard_lord.services.state.enemy'], ['cljs.core']);
 goog.addDependency("../reagent/interop.js", ['reagent.interop'], ['cljs.core']);
 goog.addDependency("../reagent/debug.js", ['reagent.debug'], ['cljs.core']);
 goog.addDependency("../reagent/impl/util.js", ['reagent.impl.util'], ['reagent.interop', 'cljs.core', 'reagent.debug', 'clojure.string']);
@@ -57,15 +58,16 @@ goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util',
 goog.addDependency("../wizard_lord/services/state/global.js", ['wizard_lord.services.state.global'], ['reagent.core', 'cljs.core']);
 goog.addDependency("../wizard_lord/services/state/textstate.js", ['wizard_lord.services.state.textstate'], ['cljs.core']);
 goog.addDependency("../wizard_lord/services/state/movement.js", ['wizard_lord.services.state.movement'], ['cljs.core']);
-goog.addDependency("../wizard_lord/services/state/dispatcher.js", ['wizard_lord.services.state.dispatcher'], ['wizard_lord.services.state.combat', 'cljs.core', 'wizard_lord.services.state.global', 'wizard_lord.services.state.textstate', 'wizard_lord.services.state.movement']);
+goog.addDependency("../wizard_lord/services/state/dispatcher.js", ['wizard_lord.services.state.dispatcher'], ['wizard_lord.services.state.combat', 'cljs.core', 'wizard_lord.services.state.global', 'wizard_lord.services.state.enemy', 'wizard_lord.services.state.textstate', 'wizard_lord.services.state.movement']);
 goog.addDependency("../wizard_lord/data/battlemats/generic.js", ['wizard_lord.data.battlemats.generic'], ['cljs.core']);
 goog.addDependency("../wizard_lord/services/scripts/helpers.js", ['wizard_lord.services.scripts.helpers'], ['cljs.core']);
 goog.addDependency("../wizard_lord/components/combat/player.js", ['wizard_lord.components.combat.player'], ['cljs.core']);
 goog.addDependency("../wizard_lord/components/combat/enemy.js", ['wizard_lord.components.combat.enemy'], ['cljs.core']);
+goog.addDependency("../wizard_lord/services/scripts/movement.js", ['wizard_lord.services.scripts.movement'], ['cljs.core']);
 goog.addDependency("../wizard_lord/services/state/initiative.js", ['wizard_lord.services.state.initiative'], ['wizard_lord.services.state.dispatcher', 'cljs.core']);
 goog.addDependency("../wizard_lord/data/enemies/Orc.js", ['wizard_lord.data.enemies.orc'], ['cljs.core', 'wizard_lord.data.enemies.enemy']);
 goog.addDependency("../wizard_lord/services/scripts/range.js", ['wizard_lord.services.scripts.range'], ['cljs.core']);
-goog.addDependency("../wizard_lord/views/combat.js", ['wizard_lord.views.combat'], ['wizard_lord.services.state.dispatcher', 'cljs.core', 'wizard_lord.data.battlemats.generic', 'wizard_lord.data.enemies.enemy', 'wizard_lord.services.scripts.helpers', 'wizard_lord.components.combat.player', 'wizard_lord.components.combat.enemy', 'wizard_lord.services.state.initiative', 'wizard_lord.data.enemies.orc', 'wizard_lord.services.scripts.range']);
+goog.addDependency("../wizard_lord/views/combat.js", ['wizard_lord.views.combat'], ['wizard_lord.services.state.dispatcher', 'cljs.core', 'wizard_lord.data.battlemats.generic', 'wizard_lord.data.enemies.enemy', 'wizard_lord.services.scripts.helpers', 'wizard_lord.services.scripts.attacks', 'wizard_lord.components.combat.player', 'wizard_lord.components.combat.enemy', 'wizard_lord.services.scripts.movement', 'wizard_lord.services.state.initiative', 'wizard_lord.data.enemies.orc', 'wizard_lord.services.scripts.range']);
 goog.addDependency("../cljs_test_display/favicon.js", ['cljs_test_display.favicon'], ['goog.dom', 'cljs.core', 'goog.object', 'clojure.string']);
 goog.addDependency("../cljs_test_display/notify.js", ['cljs_test_display.notify'], ['cljs.core', 'goog.object', 'cljs_test_display.favicon']);
 goog.addDependency("../cljs_test_display/core.js", ['cljs_test_display.core'], ['goog.dom', 'goog.dom.classlist', 'cljs_test_display.notify', 'cljs.core', 'cljs.test', 'goog.events.EventType', 'cljs_test_display.favicon', 'clojure.string', 'goog.events.KeyCodes', 'goog.events']);

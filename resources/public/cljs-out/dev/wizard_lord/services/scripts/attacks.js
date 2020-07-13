@@ -9,5 +9,8 @@ return damage;
 return (0);
 }
 });
+wizard_lord.services.scripts.attacks.handle_enemy_attack = (function wizard_lord$services$scripts$attacks$handle_enemy_attack(combat_state){
+return null;
+});
 
 //# sourceMappingURL=attacks.js.map

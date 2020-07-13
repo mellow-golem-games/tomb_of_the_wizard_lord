@@ -10,12 +10,13 @@
    :initiative-order [1 2]
    :current-initiative 1
    :move-active false
-   :attack-active false})
+   :attack-active false
+   :enemy-turn-in-progress false}) ; we need this to prevent duplicate flows on an enemy
 
 
 ; initial rep of our overall state- it's not striclty neccessary to build it out like this
 ; but I like to as it's a good place to reference all my current state options.
-(defonce app-state (atom {:text "Hello world!"
+(defonce app-state (atom {
                           :active-page {:example-page false
                                         :combat-view "active"}
                           :combat-view combat-state}))

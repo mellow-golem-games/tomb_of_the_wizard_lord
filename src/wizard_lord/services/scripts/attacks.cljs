@@ -6,3 +6,7 @@
     (if (> damage 0)
       damage
       0)))
+
+
+(defn handle-enemy-attack [combat-state])
+  

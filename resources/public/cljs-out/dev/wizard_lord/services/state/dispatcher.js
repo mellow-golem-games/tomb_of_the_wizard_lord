@@ -4,6 +4,7 @@ goog.require('cljs.core');
 goog.require('wizard_lord.services.state.global');
 goog.require('wizard_lord.services.state.movement');
 goog.require('wizard_lord.services.state.combat');
+goog.require('wizard_lord.services.state.enemy');
 goog.require('wizard_lord.services.state.textstate');
 if((typeof wizard_lord !== 'undefined') && (typeof wizard_lord.services !== 'undefined') && (typeof wizard_lord.services.state !== 'undefined') && (typeof wizard_lord.services.state.dispatcher !== 'undefined') && (typeof wizard_lord.services.state.dispatcher.handle_state_change !== 'undefined')){
 } else {
@@ -28,11 +29,20 @@ return wizard_lord.services.state.movement.update_move_active.call(null,wizard_l
 cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"handle-character-move",(function (action){
 return wizard_lord.services.state.movement.handle_character_move.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
 }));
+cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"handle-enemy-move",(function (action){
+return wizard_lord.services.state.enemy.handle_enemy_move.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
+}));
 cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"update-attack-active",(function (action){
 return wizard_lord.services.state.combat.update_attack_active.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
 }));
 cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"handle-character-attack",(function (action){
 return wizard_lord.services.state.combat.handle_character_attack.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
+}));
+cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"handle-enemy-attack",(function (action){
+return wizard_lord.services.state.enemy.handle_enemy_attack.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
+}));
+cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"set-enemey-turn-in-progress",(function (action){
+return wizard_lord.services.state.enemy.set_in_progress.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));
 }));
 cljs.core._add_method.call(null,wizard_lord.services.state.dispatcher.handle_state_change,"handle-end-turn",(function (action){
 wizard_lord.services.state.combat.handle_reset_character_action_points.call(null,wizard_lord.services.state.global.app_state,new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(action));

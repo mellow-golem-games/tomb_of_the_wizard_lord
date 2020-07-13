@@ -1,7 +1,9 @@
 (ns wizard-lord.views.combat
   (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
-            [wizard-lord.services.scripts.helpers :refer [get-active-player]]
+            [wizard-lord.services.scripts.helpers :refer [get-active-player get-active-enemy is-enemy-turn?]]
             [wizard-lord.services.scripts.range :refer [is-attack-in-range?]]
+            [wizard-lord.services.scripts.attacks :refer [handle-enemy-attack]]
+            [wizard-lord.services.scripts.movement :refer [find-closest-player get-near-player-spot]]
             [wizard-lord.data.enemies.enemy :as Enemy]
             [wizard-lord.data.enemies.orc :refer [Orc]]
             [wizard-lord.components.combat.player :refer [Player]]
@@ -61,9 +63,26 @@
 ; TODO this should be set in state somewhere
 (def currentMat (:small-room  generic-battlemat))
 
+(defn do-enemy-turn [combat-state]
+  (handle-state-change {:type "set-enemey-turn-in-progress" :value true})
+  (let [enemy (get-active-enemy combat-state)
+        closestPlayer (find-closest-player (:x enemy) (:y enemy) (:players combat-state))
+        spotToMove (get-near-player-spot closestPlayer)]
+    (handle-state-change {:type "handle-enemy-move" :value (conj spotToMove {:id (:id enemy)})})
+    (handle-state-change {:type "handle-enemy-attack" :value {:enemy enemy :id (:id closestPlayer)}})
+    #(handle-end-turn enemy)
+    ; we'll use a timeout for now to simulate time, but we should probably come up with a better system for this
+    (js/setTimeout #((handle-state-change {:type "set-enemey-turn-in-progress" :value false})) 1000)))
+
+
+(defn start-enemy-turn [combat-state]
+  (if (not (:enemy-turn-in-progress combat-state))
+    (do-enemy-turn combat-state)))
+
 (defn Combat [active app-state]
-  (print @app-state)
-  (let [character (first (filter #(= (:id %) (:current-initiative (:combat-view @app-state))) (:players (:combat-view @app-state))))]
+  (let [character (first (filter #(= (:id %) (:current-initiative (:combat-view @app-state))) (:players (:combat-view @app-state))))
+        combat-state (:combat-view @app-state)]
+    (print (:players combat-state))
     [:div.Combat.Page {:class active}
      [:div.Combat__view.Combat__section
       [:div.Combat__view__inner
@@ -75,6 +94,11 @@
         (doall (for [enemy (:enemies (:combat-view @app-state))]
                  ^{:key (:id enemy)} [Enemy enemy (:combat-view @app-state)]))]]]
      [:div.Combat__history.Combat__Section
+      (if (is-enemy-turn? (:current-initiative combat-state) (:enemies combat-state))
+        (do
+          (start-enemy-turn combat-state)
+          [:p "Enemy Turn"])
+        [:p "Your Turn"])
       (if (:move-active (:combat-view @app-state))
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value false})} "Cancel Move"]
         [:button {:on-click #(handle-state-change {:type "update-move-active" :value true}) :disabled (= 0 (:remaining (:character character)))} "move"])

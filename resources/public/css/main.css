@@ -75,7 +75,8 @@ table {
 .Player {
   width: 50px;
   height: 50px;
-  position: absolute; }
+  position: absolute;
+  transition: all .5s; }
   .Player-moveActive {
     filter: brightness(125%); }
   .Player img {
@@ -88,6 +89,7 @@ table {
     position: relative;
     border: 1px solid black; }
     .Player .healthbar__inner {
+      transition: all .5s;
       position: absolute;
       top: 0;
       left: 0;
@@ -97,7 +99,8 @@ table {
 .Enemy {
   width: 50px;
   height: 50px;
-  position: absolute; }
+  position: absolute;
+  transition: all .5s; }
   .Enemy img {
     width: 40px;
     height: 40px; }
@@ -108,6 +111,7 @@ table {
     position: relative;
     border: 1px solid black; }
     .Enemy .healthbar__inner {
+      transition: all .5s;
       position: absolute;
       top: 0;
       left: 0;
