@@ -4,6 +4,7 @@
    [reagent.core :as reagent :refer [atom]]
    [wizard-lord.services.state.global :refer [app-state]]
    [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
+   [wizard-lord.views.main :refer [Main]]
    [wizard-lord.views.combat :refer [Combat]]))
 
 
@@ -11,7 +12,7 @@
 (defn get-app-element []
   (gdom/getElement "app"))
 
-(defn hello-world []
+(defn render-game []
   [:div.App
    [:div.background]
    [:div.background.tr]
@@ -21,10 +22,11 @@
    [:div.backgroundBar.bottom]
    [:div.backgroundBar.right]
    [:div.backgroundBar.left]
+   [Main (:main-view (:active-page @app-state)) app-state]
    [Combat (:combat-view (:active-page @app-state)) app-state]])
 
 (defn mount [el]
-  (reagent/render-component [hello-world] el))
+  (reagent/render-component [render-game] el))
 
 (defn mount-app-element []
   (when-let [el (get-app-element)]

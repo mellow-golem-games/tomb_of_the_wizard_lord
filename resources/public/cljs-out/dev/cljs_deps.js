@@ -71,7 +71,10 @@ goog.addDependency("../wizard_lord/views/combat.js", ['wizard_lord.views.combat'
 goog.addDependency("../cljs_test_display/favicon.js", ['cljs_test_display.favicon'], ['goog.dom', 'cljs.core', 'goog.object', 'clojure.string']);
 goog.addDependency("../cljs_test_display/notify.js", ['cljs_test_display.notify'], ['cljs.core', 'goog.object', 'cljs_test_display.favicon']);
 goog.addDependency("../cljs_test_display/core.js", ['cljs_test_display.core'], ['goog.dom', 'goog.dom.classlist', 'cljs_test_display.notify', 'cljs.core', 'cljs.test', 'goog.events.EventType', 'cljs_test_display.favicon', 'clojure.string', 'goog.events.KeyCodes', 'goog.events']);
+goog.addDependency("../wizard_lord/components/options.js", ['wizard_lord.components.options'], ['cljs.core']);
+goog.addDependency("../wizard_lord/components/frame.js", ['wizard_lord.components.frame'], ['cljs.core']);
+goog.addDependency("../wizard_lord/views/main.js", ['wizard_lord.views.main'], ['cljs.core', 'wizard_lord.components.options', 'wizard_lord.components.frame']);
 goog.addDependency("../wizard_lord/core_test.js", ['wizard_lord.core_test'], ['cljs.core', 'cljs.test']);
-goog.addDependency("../wizard_lord/core.js", ['wizard_lord.core'], ['goog.dom', 'wizard_lord.views.combat', 'wizard_lord.services.state.dispatcher', 'reagent.core', 'cljs.core', 'wizard_lord.services.state.global']);
+goog.addDependency("../wizard_lord/core.js", ['wizard_lord.core'], ['goog.dom', 'wizard_lord.views.main', 'wizard_lord.views.combat', 'wizard_lord.services.state.dispatcher', 'reagent.core', 'cljs.core', 'wizard_lord.services.state.global']);
 goog.addDependency("../wizard_lord/test_runner.js", ['wizard_lord.test_runner'], ['cljs.core', 'wizard_lord.core_test', 'figwheel.main.testing']);
 goog.addDependency("../figwheel/main/generated/dev_auto_test_runner.js", ['figwheel.main.generated.dev_auto_test_runner'], ['cljs.core', 'wizard_lord.core_test', 'cljs.test', 'cljs_test_display.core']);

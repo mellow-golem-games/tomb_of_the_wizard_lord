@@ -167,6 +167,55 @@ table {
       height: 2px;
       background: red; }
 
+.OptionsBar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 50px;
+  background: url("../images/set/holder.png");
+  background-size: contain; }
+  .OptionsBar__button {
+    transition: all .25s; }
+    .OptionsBar__button.character {
+      position: relative;
+      left: 13px; }
+    .OptionsBar__button.inventory {
+      position: relative;
+      left: 20px; }
+    .OptionsBar__button.journal {
+      position: relative;
+      left: 30px; }
+    .OptionsBar__button:active {
+      filter: brightness(50%); }
+
+.Frame {
+  width: 50px;
+  height: 50px;
+  background: url("../images/set/portrait-container.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  right: 6px; }
+
+.Main__wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+  .Main__wrapper__map {
+    height: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  .Main__wrapper__container {
+    padding: 10px;
+    height: 50%;
+    background: url("../images/set/paperTexture.jpg");
+    background-size: cover;
+    position: relative; }
+
 .Combat__section {
   height: 50vh; }
 

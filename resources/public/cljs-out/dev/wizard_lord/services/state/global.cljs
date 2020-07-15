@@ -17,8 +17,8 @@
 ; initial rep of our overall state- it's not striclty neccessary to build it out like this
 ; but I like to as it's a good place to reference all my current state options.
 (defonce app-state (atom {
-                          :active-page {:example-page false
-                                        :combat-view "active"}
+                          :active-page {:main-view "active"
+                                        :combat-view false}
                           :combat-view combat-state}))
 
 ; TODO move these two scrolling functions into a state helper file

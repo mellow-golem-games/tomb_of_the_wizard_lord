@@ -14,8 +14,8 @@ goog.require('wizard_lord.data.battlemats.generic');
 goog.require('wizard_lord.services.state.initiative');
 wizard_lord.views.combat.get_moveable_grid = (function wizard_lord$views$combat$get_moveable_grid(x,y,combat_state){
 if(cljs.core.truth_(new cljs.core.Keyword(null,"move-active","move-active",-410074174).cljs$core$IFn$_invoke$arity$1(combat_state))){
-var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__8748_SHARP_){
-return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__8748_SHARP_),new cljs.core.Keyword(null,"current-initiative","current-initiative",62014760).cljs$core$IFn$_invoke$arity$1(combat_state));
+var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__14028_SHARP_){
+return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__14028_SHARP_),new cljs.core.Keyword(null,"current-initiative","current-initiative",62014760).cljs$core$IFn$_invoke$arity$1(combat_state));
 }),new cljs.core.Keyword(null,"players","players",-1361554569).cljs$core$IFn$_invoke$arity$1(combat_state)));
 var moveDistance = ((5) * (Math.abs((new cljs.core.Keyword(null,"x","x",2099068185).cljs$core$IFn$_invoke$arity$1(character) - x)) + Math.abs((new cljs.core.Keyword(null,"y","y",-1757859776).cljs$core$IFn$_invoke$arity$1(character) - y))));
 if((moveDistance > new cljs.core.Keyword(null,"remaining","remaining",-138926777).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"character","character",380652989).cljs$core$IFn$_invoke$arity$1(character)))){
@@ -52,8 +52,8 @@ return cljs.core.not_EQ_.call(null,e.tagName,"IMG");
 return and__4120__auto__;
 }
 })())){
-var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__8749_SHARP_){
-return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__8749_SHARP_),new cljs.core.Keyword(null,"current-initiative","current-initiative",62014760).cljs$core$IFn$_invoke$arity$1(combat_state));
+var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__14029_SHARP_){
+return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__14029_SHARP_),new cljs.core.Keyword(null,"current-initiative","current-initiative",62014760).cljs$core$IFn$_invoke$arity$1(combat_state));
 }),new cljs.core.Keyword(null,"players","players",-1361554569).cljs$core$IFn$_invoke$arity$1(combat_state)));
 var x = e.dataset.x;
 var y = e.dataset.y;
@@ -79,24 +79,24 @@ while(true){
 if(cljs.core._EQ_.call(null,index,new cljs.core.Keyword(null,"row","row",-570139521).cljs$core$IFn$_invoke$arity$1(mat))){
 return rows;
 } else {
-var G__8750 = ((1) + index);
-var G__8751 = cljs.core.conj.call(null,rows,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.Battlemat__row","div.Battlemat__row",1134184751),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),index], null),(function (){var innerIndex = (0);
+var G__14030 = ((1) + index);
+var G__14031 = cljs.core.conj.call(null,rows,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.Battlemat__row","div.Battlemat__row",1134184751),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),index], null),(function (){var innerIndex = (0);
 var innerRow = cljs.core.List.EMPTY;
 while(true){
 if(cljs.core._EQ_.call(null,innerIndex,new cljs.core.Keyword(null,"columns","columns",1998437288).cljs$core$IFn$_invoke$arity$1(mat))){
 return cljs.core.reverse.call(null,innerRow);
 } else {
-var G__8752 = ((1) + innerIndex);
-var G__8753 = cljs.core.conj.call(null,innerRow,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.Battlemat__column","div.Battlemat__column",-1566715691),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"data-x","data-x",369429472),innerIndex,new cljs.core.Keyword(null,"data-y","data-y",1384135050),index,new cljs.core.Keyword(null,"key","key",-1516042587),innerIndex,new cljs.core.Keyword(null,"class","class",-2030961996),(((!(wizard_lord.views.combat.get_moveable_grid.call(null,innerIndex,index,combat_state))))?"Battlemat__column--oor":null)], null)], null));
-innerIndex = G__8752;
-innerRow = G__8753;
+var G__14032 = ((1) + innerIndex);
+var G__14033 = cljs.core.conj.call(null,innerRow,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.Battlemat__column","div.Battlemat__column",-1566715691),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"data-x","data-x",369429472),innerIndex,new cljs.core.Keyword(null,"data-y","data-y",1384135050),index,new cljs.core.Keyword(null,"key","key",-1516042587),innerIndex,new cljs.core.Keyword(null,"class","class",-2030961996),(((!(wizard_lord.views.combat.get_moveable_grid.call(null,innerIndex,index,combat_state))))?"Battlemat__column--oor":null)], null)], null));
+innerIndex = G__14032;
+innerRow = G__14033;
 continue;
 }
 break;
 }
 })()], null));
-index = G__8750;
-rows = G__8751;
+index = G__14030;
+rows = G__14031;
 continue;
 }
 break;
@@ -128,35 +128,35 @@ return null;
 }
 });
 wizard_lord.views.combat.Combat = (function wizard_lord$views$combat$Combat(active,app_state){
-var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__8754_SHARP_){
-return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__8754_SHARP_),new cljs.core.Keyword(null,"current-initiative","current-initiative",62014760).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))));
+var character = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__14034_SHARP_){
+return cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__14034_SHARP_),new cljs.core.Keyword(null,"current-initiative","current-initiative",62014760).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))));
 }),new cljs.core.Keyword(null,"players","players",-1361554569).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state)))));
 var combat_state = new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state));
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.Combat.Page","div.Combat.Page",-235972779),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),active], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.Combat__view.Combat__section","div.Combat__view.Combat__section",-1824937940),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.Combat__view__inner","div.Combat__view__inner",-363296804),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.Combat__view__inner__container","div.Combat__view__inner__container",-196832227),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"style","style",-496642736),wizard_lord.views.combat.generate_combat_holder_size.call(null,wizard_lord.views.combat.currentMat),new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (character,combat_state){
-return (function (p1__8755_SHARP_){
-return wizard_lord.views.combat.handle_grid_click.call(null,p1__8755_SHARP_.target,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state)));
+return (function (p1__14035_SHARP_){
+return wizard_lord.views.combat.handle_grid_click.call(null,p1__14035_SHARP_.target,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state)));
 });})(character,combat_state))
 ], null),(function (){var iter__4523__auto__ = ((function (character,combat_state){
-return (function wizard_lord$views$combat$Combat_$_iter__8756(s__8757){
+return (function wizard_lord$views$combat$Combat_$_iter__14036(s__14037){
 return (new cljs.core.LazySeq(null,((function (character,combat_state){
 return (function (){
-var s__8757__$1 = s__8757;
+var s__14037__$1 = s__14037;
 while(true){
-var temp__5457__auto__ = cljs.core.seq.call(null,s__8757__$1);
+var temp__5457__auto__ = cljs.core.seq.call(null,s__14037__$1);
 if(temp__5457__auto__){
-var s__8757__$2 = temp__5457__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__8757__$2)){
-var c__4521__auto__ = cljs.core.chunk_first.call(null,s__8757__$2);
+var s__14037__$2 = temp__5457__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__14037__$2)){
+var c__4521__auto__ = cljs.core.chunk_first.call(null,s__14037__$2);
 var size__4522__auto__ = cljs.core.count.call(null,c__4521__auto__);
-var b__8759 = cljs.core.chunk_buffer.call(null,size__4522__auto__);
-if((function (){var i__8758 = (0);
+var b__14039 = cljs.core.chunk_buffer.call(null,size__4522__auto__);
+if((function (){var i__14038 = (0);
 while(true){
-if((i__8758 < size__4522__auto__)){
-var row = cljs.core._nth.call(null,c__4521__auto__,i__8758);
-cljs.core.chunk_append.call(null,b__8759,row);
+if((i__14038 < size__4522__auto__)){
+var row = cljs.core._nth.call(null,c__4521__auto__,i__14038);
+cljs.core.chunk_append.call(null,b__14039,row);
 
-var G__8768 = (i__8758 + (1));
-i__8758 = G__8768;
+var G__14048 = (i__14038 + (1));
+i__14038 = G__14048;
 continue;
 } else {
 return true;
@@ -164,13 +164,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__8759),wizard_lord$views$combat$Combat_$_iter__8756.call(null,cljs.core.chunk_rest.call(null,s__8757__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__14039),wizard_lord$views$combat$Combat_$_iter__14036.call(null,cljs.core.chunk_rest.call(null,s__14037__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__8759),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__14039),null);
 }
 } else {
-var row = cljs.core.first.call(null,s__8757__$2);
-return cljs.core.cons.call(null,row,wizard_lord$views$combat$Combat_$_iter__8756.call(null,cljs.core.rest.call(null,s__8757__$2)));
+var row = cljs.core.first.call(null,s__14037__$2);
+return cljs.core.cons.call(null,row,wizard_lord$views$combat$Combat_$_iter__14036.call(null,cljs.core.rest.call(null,s__14037__$2)));
 }
 } else {
 return null;
@@ -183,26 +183,26 @@ break;
 ;
 return iter__4523__auto__.call(null,wizard_lord.views.combat.generate_battlemat.call(null,wizard_lord.views.combat.currentMat,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))));
 })(),cljs.core.doall.call(null,(function (){var iter__4523__auto__ = ((function (character,combat_state){
-return (function wizard_lord$views$combat$Combat_$_iter__8760(s__8761){
+return (function wizard_lord$views$combat$Combat_$_iter__14040(s__14041){
 return (new cljs.core.LazySeq(null,((function (character,combat_state){
 return (function (){
-var s__8761__$1 = s__8761;
+var s__14041__$1 = s__14041;
 while(true){
-var temp__5457__auto__ = cljs.core.seq.call(null,s__8761__$1);
+var temp__5457__auto__ = cljs.core.seq.call(null,s__14041__$1);
 if(temp__5457__auto__){
-var s__8761__$2 = temp__5457__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__8761__$2)){
-var c__4521__auto__ = cljs.core.chunk_first.call(null,s__8761__$2);
+var s__14041__$2 = temp__5457__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__14041__$2)){
+var c__4521__auto__ = cljs.core.chunk_first.call(null,s__14041__$2);
 var size__4522__auto__ = cljs.core.count.call(null,c__4521__auto__);
-var b__8763 = cljs.core.chunk_buffer.call(null,size__4522__auto__);
-if((function (){var i__8762 = (0);
+var b__14043 = cljs.core.chunk_buffer.call(null,size__4522__auto__);
+if((function (){var i__14042 = (0);
 while(true){
-if((i__8762 < size__4522__auto__)){
-var player = cljs.core._nth.call(null,c__4521__auto__,i__8762);
-cljs.core.chunk_append.call(null,b__8763,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [wizard_lord.components.combat.player.Player,player,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(player)], null)));
+if((i__14042 < size__4522__auto__)){
+var player = cljs.core._nth.call(null,c__4521__auto__,i__14042);
+cljs.core.chunk_append.call(null,b__14043,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [wizard_lord.components.combat.player.Player,player,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(player)], null)));
 
-var G__8769 = (i__8762 + (1));
-i__8762 = G__8769;
+var G__14049 = (i__14042 + (1));
+i__14042 = G__14049;
 continue;
 } else {
 return true;
@@ -210,13 +210,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__8763),wizard_lord$views$combat$Combat_$_iter__8760.call(null,cljs.core.chunk_rest.call(null,s__8761__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__14043),wizard_lord$views$combat$Combat_$_iter__14040.call(null,cljs.core.chunk_rest.call(null,s__14041__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__8763),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__14043),null);
 }
 } else {
-var player = cljs.core.first.call(null,s__8761__$2);
-return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [wizard_lord.components.combat.player.Player,player,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(player)], null)),wizard_lord$views$combat$Combat_$_iter__8760.call(null,cljs.core.rest.call(null,s__8761__$2)));
+var player = cljs.core.first.call(null,s__14041__$2);
+return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [wizard_lord.components.combat.player.Player,player,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(player)], null)),wizard_lord$views$combat$Combat_$_iter__14040.call(null,cljs.core.rest.call(null,s__14041__$2)));
 }
 } else {
 return null;
@@ -229,26 +229,26 @@ break;
 ;
 return iter__4523__auto__.call(null,new cljs.core.Keyword(null,"players","players",-1361554569).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))));
 })()),cljs.core.doall.call(null,(function (){var iter__4523__auto__ = ((function (character,combat_state){
-return (function wizard_lord$views$combat$Combat_$_iter__8764(s__8765){
+return (function wizard_lord$views$combat$Combat_$_iter__14044(s__14045){
 return (new cljs.core.LazySeq(null,((function (character,combat_state){
 return (function (){
-var s__8765__$1 = s__8765;
+var s__14045__$1 = s__14045;
 while(true){
-var temp__5457__auto__ = cljs.core.seq.call(null,s__8765__$1);
+var temp__5457__auto__ = cljs.core.seq.call(null,s__14045__$1);
 if(temp__5457__auto__){
-var s__8765__$2 = temp__5457__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__8765__$2)){
-var c__4521__auto__ = cljs.core.chunk_first.call(null,s__8765__$2);
+var s__14045__$2 = temp__5457__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__14045__$2)){
+var c__4521__auto__ = cljs.core.chunk_first.call(null,s__14045__$2);
 var size__4522__auto__ = cljs.core.count.call(null,c__4521__auto__);
-var b__8767 = cljs.core.chunk_buffer.call(null,size__4522__auto__);
-if((function (){var i__8766 = (0);
+var b__14047 = cljs.core.chunk_buffer.call(null,size__4522__auto__);
+if((function (){var i__14046 = (0);
 while(true){
-if((i__8766 < size__4522__auto__)){
-var enemy = cljs.core._nth.call(null,c__4521__auto__,i__8766);
-cljs.core.chunk_append.call(null,b__8767,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [wizard_lord.components.combat.enemy.Enemy,enemy,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(enemy)], null)));
+if((i__14046 < size__4522__auto__)){
+var enemy = cljs.core._nth.call(null,c__4521__auto__,i__14046);
+cljs.core.chunk_append.call(null,b__14047,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [wizard_lord.components.combat.enemy.Enemy,enemy,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(enemy)], null)));
 
-var G__8770 = (i__8766 + (1));
-i__8766 = G__8770;
+var G__14050 = (i__14046 + (1));
+i__14046 = G__14050;
 continue;
 } else {
 return true;
@@ -256,13 +256,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__8767),wizard_lord$views$combat$Combat_$_iter__8764.call(null,cljs.core.chunk_rest.call(null,s__8765__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__14047),wizard_lord$views$combat$Combat_$_iter__14044.call(null,cljs.core.chunk_rest.call(null,s__14045__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__8767),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__14047),null);
 }
 } else {
-var enemy = cljs.core.first.call(null,s__8765__$2);
-return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [wizard_lord.components.combat.enemy.Enemy,enemy,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(enemy)], null)),wizard_lord$views$combat$Combat_$_iter__8764.call(null,cljs.core.rest.call(null,s__8765__$2)));
+var enemy = cljs.core.first.call(null,s__14045__$2);
+return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [wizard_lord.components.combat.enemy.Enemy,enemy,new cljs.core.Keyword(null,"combat-view","combat-view",585821215).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,app_state))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(enemy)], null)),wizard_lord$views$combat$Combat_$_iter__14044.call(null,cljs.core.rest.call(null,s__14045__$2)));
 }
 } else {
 return null;

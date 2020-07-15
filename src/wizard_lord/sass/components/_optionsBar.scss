@@ -1,0 +1,31 @@
+.OptionsBar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 50px;
+  background: url('../images/set/holder.png');
+  background-size: contain;
+
+
+  &__button {
+    transition: all .25s;
+
+    &.character {
+      position: relative;
+      left: 13px;
+    }
+    &.inventory {
+      position: relative;
+      left: 20px;
+    }
+    &.journal {
+      position: relative;
+      left: 30px;
+    }
+
+    &:active {
+      filter: brightness(50%);
+    }
+  }
+}
