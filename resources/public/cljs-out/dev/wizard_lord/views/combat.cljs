@@ -82,7 +82,6 @@
 (defn Combat [active app-state]
   (let [character (first (filter #(= (:id %) (:current-initiative (:combat-view @app-state))) (:players (:combat-view @app-state))))
         combat-state (:combat-view @app-state)]
-    (print (:players combat-state))
     [:div.Combat.Page {:class active}
      [:div.Combat__view.Combat__section
       [:div.Combat__view__inner

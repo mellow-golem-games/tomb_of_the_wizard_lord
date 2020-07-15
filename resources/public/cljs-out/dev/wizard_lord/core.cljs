@@ -12,7 +12,15 @@
   (gdom/getElement "app"))
 
 (defn hello-world []
-  [:div
+  [:div.App
+   [:div.background]
+   [:div.background.tr]
+   [:div.background.bl]
+   [:div.background.br]
+   [:div.backgroundBar]
+   [:div.backgroundBar.bottom]
+   [:div.backgroundBar.right]
+   [:div.backgroundBar.left]
    [Combat (:combat-view (:active-page @app-state)) app-state]])
 
 (defn mount [el]
