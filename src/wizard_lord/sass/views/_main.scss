@@ -9,10 +9,45 @@
     &__map {
       height: 50%;
       padding: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      position: relative;
+      overflow: hidden;
+
+      &__frameWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        position: relative;
+        z-index: 150;
+        width: 50px; // SAME WITH AS FRAMES
+
+      }
+
+      &__mapContainer {
+        overflow: hidden;
+        position: absolute;
+        // width: 1000px;  // TODO these need to be added dynamically I think
+        // height: 800px;
+        top: 0;
+        left: 0;
+        z-index: 100;
+
+
+        .mapMarker {
+          position: absolute;
+          z-index: 200;
+
+          &.tavern {
+            left: 1650px;
+            top: 200px;
+            font-weight: 600;
+            color: red;
+          }
+        }
+      }
     }
+
+
 
     &__container {
       padding: 10px;
