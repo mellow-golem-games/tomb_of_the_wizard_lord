@@ -12,5 +12,5 @@ pom.xml
 .repl
 .nrepl-port
 /node_modules
-/public/resources/cljs-out
-/public/resources/css
+/resources/public/cljs-out
+/resources/public/css
