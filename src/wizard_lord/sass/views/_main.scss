@@ -36,6 +36,7 @@
         .mapMarker {
           position: absolute;
           z-index: 200;
+          color: white;
 
           &.tavern {
             left: 1650px;

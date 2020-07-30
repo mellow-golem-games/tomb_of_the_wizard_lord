@@ -1,0 +1,1 @@
+(ns wizard-lord.data.locations.locatin)

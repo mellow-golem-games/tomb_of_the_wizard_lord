@@ -1,0 +1,8 @@
+// Compiled by ClojureScript 1.10.520 {}
+goog.provide('wizard_lord.components.options');
+goog.require('cljs.core');
+wizard_lord.components.options.Options_bar = (function wizard_lord$components$options$Options_bar(){
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.OptionsBar","div.OptionsBar",-1363451539),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"img.OptionsBar__button.character","img.OptionsBar__button.character",1578663420),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"src","src",-1651076051),"./images/set/character.png",new cljs.core.Keyword(null,"width","width",-384071477),"45px"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"img.OptionsBar__button.inventory","img.OptionsBar__button.inventory",722432256),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"src","src",-1651076051),"./images/set/inventory.png",new cljs.core.Keyword(null,"width","width",-384071477),"45px"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"img.OptionsBar__button.journal","img.OptionsBar__button.journal",-1995350787),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"src","src",-1651076051),"./images/set/journal.png",new cljs.core.Keyword(null,"width","width",-384071477),"45px"], null)], null)], null);
+});
+
+//# sourceMappingURL=options.js.map
