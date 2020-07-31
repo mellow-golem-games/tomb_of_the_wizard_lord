@@ -10,7 +10,7 @@
                  [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]]
 
-  :source-paths ["src"]
+  :source-paths ["src" "test"]
 
   :aliases {"fig"       ["trampoline" "run" "-m" "figwheel.main"]
             "fig:build" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]

@@ -2,8 +2,8 @@
 (ns wizard-lord.test-runner
   (:require
     ;; require all the namespaces that you want to test
-    [wizard-lord.core-test]
-    [figwheel.main.testing :refer [run-tests-async]]))
+    [wizard-lord.combat-test]
+    [figwheel.main.testing :refer [run-tests-async run-tests]]))
 
 (defn -main [& args]
-  (run-tests-async 5000))
+  (run-tests))
