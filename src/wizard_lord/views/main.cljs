@@ -2,6 +2,7 @@
   (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
             [wizard-lord.components.options :refer [Options-bar]]
             [wizard-lord.components.frame :refer [Frame]]
+            [wizard-lord.components.map-marker :refer [MapMarker]]
             [wizard-lord.data.locations.locations :refer [get-current-location get-current-location-details]]))
 
 
@@ -11,6 +12,7 @@
   (def element (.querySelector js/document "#scene"))
   (def ref (panzoom element (clj->js {:maxZoom 6 :minZoom 0.1
                                               :minScale 1
+                                              ; :transformOrigin {:x 0.5 :y 0.5}
                                               :boundsPadding 1 ; it multiplies by this is in the code for panzoom
                                               :bounds true}))))
 
@@ -30,7 +32,7 @@
         [Frame]]
        [:div.Main__wrapper__map__mapContainer {:id "scene"}
         (for [location (:locations current-view)]
-          [:p.mapMarker  {:key (:name location) :on-click #(handle-state-change {:type "set-location-key" :value (:key location)}) :style {:left (:x location) :top (:y location)}} (:name location)])
+          [MapMarker location])
         [:img {:src "../images/town.jpg"}]]]
       [:div.Main__wrapper__container
        (if (:current-location explore-view)
