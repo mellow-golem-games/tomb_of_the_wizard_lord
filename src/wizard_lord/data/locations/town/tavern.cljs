@@ -12,3 +12,6 @@
    (tavern-characters (:characters location))                                   ; character description
                                         ; enviromental factors
    [:p "random event"]])
+
+
+(defn tavern-on-exit []) ; handles events as you leave the tavern
