@@ -2,6 +2,8 @@
   (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
             [wizard-lord.components.options :refer [Options-bar]]
             [wizard-lord.components.frame :refer [Frame]]
+            [wizard-lord.data.characters.town.town-npcs.cljs :refer [Town-Npcs]]
+            [wizard-lord.services.scripts.dialogue :refer [dialogue-generator]]
             [wizard-lord.components.map-marker :refer [MapMarker]]
             [wizard-lord.data.locations.locations :refer [get-current-location get-current-location-details]]))
 
@@ -21,7 +23,8 @@
 
 (defn Main [active app-state]
   (let [explore-view (:explore-view @app-state)
-        current-view (get-current-location (:current explore-view))]
+        current-view (get-current-location (:current explore-view))
+        dialogue (:dialogue @app-state)]
     ; (get-current-location-details current-view (:current-location explore-view))
     [:div.Main.Page {:class active}
      [:div.Main__wrapper
@@ -39,4 +42,5 @@
          ; [:p (str "You are in a location with the key: " (:current-location explore-view))]
          (get-current-location-details (:current explore-view) current-view (:current-location explore-view))
          [:p (:description (:base current-view))])
+       (dialogue-generator (:character-state dialogue) (:character dialogue)  (:flow dialogue))
        [Options-bar]]]]))

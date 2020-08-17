@@ -1,5 +1,6 @@
 (ns wizard-lord.services.state.global
-    (:require [reagent.core :as reagent :refer [atom]]))
+    (:require [reagent.core :as reagent :refer [atom]]
+              [wizard-lord.data.characters.town.town-npcs.cljs :refer [Town-Npcs]]))
 
 
 (def explore-state
@@ -18,12 +19,23 @@
    :attack-active false
    :enemy-turn-in-progress false}) ; we need this to prevent duplicate flows on an enemy
 
+(def character-state {:visited? false}) ; TODO remove - testing only
+
+(def dialogue-state
+  {:character (first Town-Npcs)
+   :character-state character-state
+   :flow :base})
+
+
+
 
 ; initial rep of our overall state- it's not striclty neccessary to build it out like this
 ; but I like to as it's a good place to reference all my current state options.
 (defonce app-state (atom {
                           :active-page {:main-view "active"
                                         :combat-view false}
+                          :dialogue-active true
+                          :dialogue dialogue-state
                           :combat-view combat-state
                           :explore-view explore-state}))
 

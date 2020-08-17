@@ -1,0 +1,13 @@
+.Dialogue {
+
+  &__npc {
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+  }
+
+  &__options {
+    margin-top: 25px;
+    padding: 5px;
+  }
+}
