@@ -4,7 +4,7 @@
             [wizard-lord.services.state.combat :refer [update-attack-active handle-character-attack handle-reset-character-action-points update-initiative-value]]
             [wizard-lord.services.state.enemy :refer [set-in-progress handle-enemy-move handle-enemy-attack]]
             [wizard-lord.services.state.locations :refer [set-current-location-key]]
-            [wizard-lord.services.state.dialogue :refer [update-dialogue-flow]]
+            [wizard-lord.services.state.dialogue :refer [update-dialogue-flow set-dialogue-active set-dialogue-id]]
             [wizard-lord.services.state.textstate :refer [update-state-text]]))
 
 ; As we need more mutations for state we can add them here - Handle state change
@@ -58,8 +58,13 @@
   [action]
   (set-current-location-key app-state (:value action)))
 
-
 ;DIALOGUE METHODS
+(defmethod handle-state-change "set-dialogue-active"
+  [action]
+  (set-dialogue-active app-state (:value action)))
+(defmethod handle-state-change "set-dialogue-id"
+  [action]
+  (set-dialogue-id app-state (:value action)))
 (defmethod handle-state-change "update-dialogue-flow"
   [action]
   (update-dialogue-flow app-state (:value action)))

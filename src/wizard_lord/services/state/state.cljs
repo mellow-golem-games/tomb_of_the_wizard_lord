@@ -22,8 +22,8 @@
 (def character-state {:visited? false}) ; TODO remove - testing only
 
 (def dialogue-state
-  {:character (first Town-Npcs)
-   :character-state character-state
+  {:character nil ; ID to current characer being interacted with
+   :character-state character-state ; TODO this will come from localstorage and not part of the atom
    :flow :base})
 
 
@@ -34,7 +34,7 @@
 (defonce app-state (atom {
                           :active-page {:main-view "active"
                                         :combat-view false}
-                          :dialogue-active true
+                          :dialogue-active false
                           :dialogue dialogue-state
                           :combat-view combat-state
                           :explore-view explore-state}))

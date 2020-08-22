@@ -31,7 +31,7 @@
     (if (:button dialogue-tree)
       (generate-dialogue-button dialogue-tree)
       (for [tree-leaf dialogue-tree]
-        [:p {:on-click #(handle-state-change {:type "update-dialogue-flow" :value (:path tree-leaf)})} (:text tree-leaf)]))))
+        ^{:key tree-leaf} [:p {:on-click #(handle-state-change {:type "update-dialogue-flow" :value (:path tree-leaf)})} (:text tree-leaf)]))))
 
 (defn dialogue-generator [character-state character-dialogue-tree flow]
   (let [dialogue-tree (:dialogue character-dialogue-tree)

@@ -21,7 +21,7 @@
                {:name "Lumber Mill" :key :lumbermill :x "155px" :y "775px"}]
    :tavern {
             :description ["base descrtipion of tavern"] ; we might have multiple depending on progress
-            :characters [{:id 1}]
+            :characters [{:id 1} {:id 2}]
             :quests [1] ; ID's of quests - only enviromental ones
             :random-events []
             :random-chance 75}
