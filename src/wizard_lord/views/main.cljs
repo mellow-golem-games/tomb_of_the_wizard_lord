@@ -11,13 +11,24 @@
 
 ; TODO this will work for dev but we should probably use lifecycle stuff to handle this
 (defn setup-pan []
-  (def panzoom (.-panzoom js/window))
+  (def panzoom (.-Panzoom js/window))
+
   (def element (.querySelector js/document "#scene"))
-  (def ref (panzoom element (clj->js {:maxZoom 6 :minZoom 0.1
-                                              :minScale 1
-                                              ; :transformOrigin {:x 0.5 :y 0.5}
-                                              :boundsPadding 1 ; it multiplies by this is in the code for panzoom
-                                              :bounds true}))))
+
+  (def ref (panzoom element (clj->js {:maxScale 5
+                                      :minScale 0.25
+                                      :contain "outside"})))
+  ; (def ref (panzoom element (clj->js {:maxZoom 4 :minZoom 0.25
+  ;                                             :minScale 1
+  ;                                             :transformOrigin {:x 0.5 :y 0.5}
+  ;                                             :boundsPadding 1 ; it multiplies by this is in the code for panzoom
+  ;                                             :bounds true})))
+
+  ; TODO fix this
+  (js/setTimeout #(.pan ref 0 -1250))
+  (js/setTimeout #(.addEventListener element "wheel" (.-zoomWithWheel ref))))
+
+
 
 (js/setTimeout #(setup-pan) 1000)
 
