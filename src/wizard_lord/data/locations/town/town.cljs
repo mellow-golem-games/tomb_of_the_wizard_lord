@@ -20,7 +20,7 @@
    :locations [{:name "Blue Recluse" :key :tavern  :x "1650px" :y "200px"}
                {:name "Lumber Mill" :key :lumbermill :x "155px" :y "775px"}]
    :tavern {
-            :description ["base descrtipion of tavern"] ; we might have multiple depending on progress
+            :description ["The tavern is a bit dark but inviting. There's a few patrons, most of them absored in their own interests and pay you little mind as you enter."] ; we might have multiple depending on progress
             :characters [{:id 1} {:id 2}]
             :quests [1] ; ID's of quests - only enviromental ones
             :random-events []

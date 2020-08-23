@@ -6,11 +6,13 @@
 
 (defn tavern-characters [characters]
   [:div.town--tavern--characters
-   [:div [:p "The bardenrer is a"]
-         [:p.ActionText {:on-click #(open-dialogue-menu 1)} "well dressed halfling"]
+   [:div.Location__dialogueWrap [:p "The bartender is a"]
+         [:p.ActionText {:on-click #(open-dialogue-menu 1) :dangerouslySetInnerHTML {:__html "&nbsp;well dressed halfling&nbsp;"}}]
          [:p "at the bar."]]
-   [:p "A man in dark robes sits in the corner"]])
-
+   [:div.Location__dialogueWrap
+    [:p "A"]
+    [:p.ActionText {:on-click #(open-dialogue-menu 2) :dangerouslySetInnerHTML {:__html "&nbsp; man in dark robes&nbsp;"}}]
+    [:p "sits in the corner"]]])
 (defn tavern-render [location]
   [:div.town--tavern
    [:p (first (:description location))] ; base description

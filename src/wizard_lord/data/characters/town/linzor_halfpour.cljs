@@ -1,6 +1,6 @@
 (ns wizard-lord.data.characters.town.linzor-halfpour)
 
-(def main-options '({:text "Something to drink?" :path :drink} {:text "A place to stay?" :path :stay} {:text "Any Rumors?" :path :rumors} {:text "The Forest?" :path :forest}))
+(def main-options '({:text "Something to drink?" :path :drink} {:text "A place to stay?" :path :stay} {:text "Any Rumors?" :path :rumors} {:text "The Forest?" :path :forest} {:text "Nothing" :path :end}))
 (def rumor-options '({:text "Lumberjacks" :path :lumberjacks} {:text "Danger woods" :path :danger-woods} {:text "The town" :path :town} {:text "Nevermind" :path :else}))
 
 
@@ -19,4 +19,5 @@
                ; second tier options
                :lumberjacks '("Rumor has it that they found some sort of structure out in the woods, pretty deep out there from what I’ve heard. I’d ask around the mill on the west side of town." {:button true :type "path" :path :rumors-again})
                :danger-woods '("Lots of beasts hang out in these woods; why the lumberjacks travel in groups, safety in numbers they say" {:button true :type "path" :path :rumors-again})
-               :town '("Oh there’s always something going on around here. If I was looking for work I’d hang around the market, you must have seen it heading up here. Lots of folk are always around there so there’s bound to be something." {:button true :type "path" :path :rumors-again})}})
+               :town '("Oh there’s always something going on around here. If I was looking for work I’d hang around the market, you must have seen it heading up here. Lots of folk are always around there so there’s bound to be something." {:button true :type "path" :path :rumors-again})
+               :end '("Take care" {:button true :type "end"})}})

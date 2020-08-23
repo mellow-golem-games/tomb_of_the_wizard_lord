@@ -1,0 +1,16 @@
+.Location {
+
+  &__dialogueWrap {
+    display: flex;
+    flex-wrap: wrap;
+
+    .ActionText {
+      color: red;
+      cursor: pointer;
+
+      &:active {
+        color: white;
+      }
+    }
+  }
+}

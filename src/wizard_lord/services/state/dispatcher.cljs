@@ -68,3 +68,8 @@
 (defmethod handle-state-change "update-dialogue-flow"
   [action]
   (update-dialogue-flow app-state (:value action)))
+(defmethod handle-state-change "close-dialogue"
+  [action]
+  (set-dialogue-active app-state false)
+  (set-dialogue-id app-state nil)
+  (update-dialogue-flow app-state :base))

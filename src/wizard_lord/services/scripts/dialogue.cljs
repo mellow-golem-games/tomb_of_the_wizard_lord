@@ -10,8 +10,9 @@
 
  ;should be a [:div    "text"  _options or next button]
 (defn generate-dialogue-button [dialogue-tree]
-  (if (= (:type dialogue-tree) "path")
-    [:button {:on-click #(handle-state-change {:type "update-dialogue-flow" :value (:path dialogue-tree)})} "Continue"]))
+  (cond
+    (= (:type dialogue-tree) "path") [:button {:on-click #(handle-state-change {:type "update-dialogue-flow" :value (:path dialogue-tree)})} "Continue"]
+    (= (:type dialogue-tree) "end") [:button {:on-click #(handle-state-change {:type "close-dialogue" :value nil})} "Continue"]))
 
 (defn get-npc-dialogue-for-visited [visited dialogue]
   (if visited

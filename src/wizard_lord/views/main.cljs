@@ -40,10 +40,10 @@
           [MapMarker location])
         [:img {:src "../images/town.jpg"}]]]
       [:div.Main__wrapper__container
-       (if (:current-location explore-view)
-         ; [:p (str "You are in a location with the key: " (:current-location explore-view))]
-         (get-current-location-details (:current explore-view) current-view (:current-location explore-view))
-         [:p (:description (:base current-view))])
        (if (:dialogue-active @app-state)
-         (dialogue-generator (:character-state dialogue) (get-character-dialogue-details (:character dialogue) (:current explore-view)) (:flow dialogue)))
+         (dialogue-generator (:character-state dialogue) (get-character-dialogue-details (:character dialogue) (:current explore-view)) (:flow dialogue))
+         (if (:current-location explore-view) ; Dont show on dialogue
+           ; [:p (str "You are in a location with the key: " (:current-location explore-view))]
+           (get-current-location-details (:current explore-view) current-view (:current-location explore-view))
+           [:p (:description (:base current-view))]))
        [Options-bar]]]]))
