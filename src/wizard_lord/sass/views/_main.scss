@@ -11,6 +11,7 @@
       padding: 10px;
       position: relative;
       overflow: hidden;
+      z-index: 1;
 
       &__frameWrapper {
         display: flex;

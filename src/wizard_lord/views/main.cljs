@@ -2,6 +2,9 @@
   (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
             [wizard-lord.components.options :refer [Options-bar]]
             [wizard-lord.components.frame :refer [Frame]]
+            [wizard-lord.views.sub.inventory :refer [Inventory]]
+            [wizard-lord.views.sub.character :refer [Character]]
+            [wizard-lord.views.sub.journal :refer [Journal]]
             [wizard-lord.data.characters.town.town-npcs.cljs :refer [Town-Npcs]]
             [wizard-lord.services.scripts.dialogue :refer [dialogue-generator]]
             [wizard-lord.components.map-marker :refer [MapMarker]]
@@ -41,6 +44,9 @@
     ; (get-current-location-details current-view (:current-location explore-view))
     [:div.Main.Page {:class active}
      [:div.Main__wrapper
+      [Character (:show-character @app-state)]
+      [Inventory (:show-inventory @app-state)]
+      [Journal (:show-journal @app-state)]
       [:div.Main__wrapper__map
        [:div.Main__wrapper__map__frameWrapper
         [Frame]

@@ -1,5 +1,5 @@
 (ns wizard-lord.services.state.dispatcher
-  (:require [wizard-lord.services.state.global :refer [app-state update-active-view]]
+  (:require [wizard-lord.services.state.global :refer [app-state update-active-view toggle-sub-view ]]
             [wizard-lord.services.state.movement :refer [update-move-active handle-character-move update-attack-active handle-reset-character-movement]]
             [wizard-lord.services.state.combat :refer [update-attack-active handle-character-attack handle-reset-character-action-points update-initiative-value]]
             [wizard-lord.services.state.enemy :refer [set-in-progress handle-enemy-move handle-enemy-attack]]
@@ -13,6 +13,9 @@
 (defmethod handle-state-change "update-active-view"
   [action]
   (update-active-view app-state (:value action)))
+(defmethod handle-state-change "toggle-sub-view"
+  [action]
+  (toggle-sub-view  app-state (:value action)))
 
 
 

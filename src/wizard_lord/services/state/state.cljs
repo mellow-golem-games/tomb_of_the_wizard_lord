@@ -36,6 +36,9 @@
                                         :combat-view false}
                           :dialogue-active false
                           :dialogue dialogue-state
+                          :show-inventory false
+                          :show-character false
+                          :show-journal false
                           :combat-view combat-state
                           :explore-view explore-state}))
 
@@ -60,3 +63,7 @@
 (defn update-active-view [app-state payload]
   (swap! app-state conj {:active-page {(keyword payload) "active"}})
   (handle-scroll-func payload))
+
+(defn toggle-sub-view [app-state payload]
+  (print (keyword (str "show-"(:sub-view payload))))
+  (swap! app-state conj {(keyword (str "show-"(:sub-view payload))) (:value payload)}))
