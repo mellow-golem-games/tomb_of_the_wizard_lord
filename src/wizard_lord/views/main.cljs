@@ -5,6 +5,7 @@
             [wizard-lord.views.sub.inventory :refer [Inventory]]
             [wizard-lord.views.sub.character :refer [Character]]
             [wizard-lord.views.sub.journal :refer [Journal]]
+            [wizard-lord.views.sub.npc-inventory :refer [NPC-Inventory]]
             [wizard-lord.data.characters.town.town-npcs.cljs :refer [Town-Npcs]]
             [wizard-lord.services.scripts.dialogue :refer [dialogue-generator]]
             [wizard-lord.components.map-marker :refer [MapMarker]]
@@ -47,6 +48,7 @@
       [Character (:show-character @app-state)]
       [Inventory (:show-inventory @app-state)]
       [Journal (:show-journal @app-state)]
+      [NPC-Inventory (:show-npc-inventory @app-state) (:npc-inventory @app-state)]
       [:div.Main__wrapper__map
        [:div.Main__wrapper__map__frameWrapper
         [Frame]

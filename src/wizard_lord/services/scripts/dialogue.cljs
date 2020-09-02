@@ -8,11 +8,17 @@
 
 ; return value
 
+(defn inventory-button-handler [dialogue-tree]
+  "easier to move it here since we need 2 events called"
+  (handle-state-change {:type "handle-open-npc-inventory" :value {:sub-view "npc-inventory" :value true :inv (:inv dialogue-tree)}})
+  (handle-state-change {:type "close-dialogue" :value nil}))
+
  ;should be a [:div    "text"  _options or next button]
 (defn generate-dialogue-button [dialogue-tree]
   (cond
     (= (:type dialogue-tree) "path") [:button {:on-click #(handle-state-change {:type "update-dialogue-flow" :value (:path dialogue-tree)})} "Continue"]
-    (= (:type dialogue-tree) "end") [:button {:on-click #(handle-state-change {:type "close-dialogue" :value nil})} "Continue"]))
+    (= (:type dialogue-tree) "end") [:button {:on-click #(handle-state-change {:type "close-dialogue" :value nil})} "Continue"]
+    (= (:type dialogue-tree) "inventory") [:button {:on-click #(inventory-button-handler dialogue-tree)} "Continue"]))
 
 (defn get-npc-dialogue-for-visited [visited dialogue]
   (if visited

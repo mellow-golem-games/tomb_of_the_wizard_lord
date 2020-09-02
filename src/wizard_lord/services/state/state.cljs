@@ -39,6 +39,8 @@
                           :show-inventory false
                           :show-character false
                           :show-journal false
+                          :show-npc-inventory false
+                          :npc-inventory nil
                           :combat-view combat-state
                           :explore-view explore-state}))
 
@@ -64,6 +66,8 @@
   (swap! app-state conj {:active-page {(keyword payload) "active"}})
   (handle-scroll-func payload))
 
+(defn handle-open-npc-inventory [app-state payload]
+  (swap! app-state conj {(keyword (str "show-"(:sub-view payload))) (:value payload) :npc-inventory (:inv payload)}))
+
 (defn toggle-sub-view [app-state payload]
-  (print (keyword (str "show-"(:sub-view payload))))
   (swap! app-state conj {(keyword (str "show-"(:sub-view payload))) (:value payload)}))

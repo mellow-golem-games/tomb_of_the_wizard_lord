@@ -3,6 +3,11 @@
 (def main-options '({:text "Something to drink?" :path :drink} {:text "A place to stay?" :path :stay} {:text "Any Rumors?" :path :rumors} {:text "The Forest?" :path :forest} {:text "Nothing" :path :end}))
 (def rumor-options '({:text "Lumberjacks" :path :lumberjacks} {:text "Danger woods" :path :danger-woods} {:text "The town" :path :town} {:text "Nevermind" :path :else}))
 
+(def inventory
+  {
+   :drink [{:name "weak drink" :cost 2} {:name "strong drink" :cost 5}]
+   :sleep [{:name "basic" :cost 5}]})
+
 
 (def Linzor-Halfpour
   {:id 1
@@ -13,8 +18,8 @@
                :rumors (list "Yea, I’ve heard a couple, lots going on in the woods these days. Turns out some of the lumberjacks might have found something, lots of people coming from all over to check it out. That’s not to say it’s going to be easy getting there. Also a lot going on around the town." rumor-options)
                :rumors-again (list "I've got time" rumor-options)
                :forest '("It’s what the town’s known for, were a logging town so the forest is the reason we’re all here. I’m probably not the best to ask about it, check with the lumbermill of the west side of town if you’re interested in learning more." {:button true :type "path" :path :else})
-               :drink '("Always something good to drink here.")
-               :stay '("I'm sure I can scrounge up a room for ya.")
+               :drink (list "Always something good to drink here." {:button true :type "inventory" :inv inventory})
+               :stay (list "I'm sure I can scrounge up a room for ya." {:button true :type "inventory" :inv inventory})
                :else (list "Something else I can help you with?" main-options)
                ; second tier options
                :lumberjacks '("Rumor has it that they found some sort of structure out in the woods, pretty deep out there from what I’ve heard. I’d ask around the mill on the west side of town." {:button true :type "path" :path :rumors-again})
