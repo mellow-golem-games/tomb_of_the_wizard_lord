@@ -40,14 +40,26 @@
       (for [tree-leaf dialogue-tree]
         ^{:key tree-leaf} [:p {:on-click #(handle-state-change {:type "update-dialogue-flow" :value (:path tree-leaf)})} (:text tree-leaf)]))))
 
+(defn handle-dialogue-map [character-state current-flow]
+  "handles all of our maps cases"
+  ;TODO we need a better way to handle this if we want to chain them for example
+  (if (:description current-flow)
+    [:div
+     [:p {:style {:font-style "italic"}} (:description current-flow)]
+     [:p (first (:dialogue current-flow))]]
+    (if (:constraint current-flow)
+      [:p (str "\"" (handle-constraint character-state current-flow) "\"")])))
+
+
+
 (defn dialogue-generator [character-state character-dialogue-tree flow]
   (let [dialogue-tree (:dialogue character-dialogue-tree)
         current-flow ((keyword flow) dialogue-tree)]
     [:div.Dialogue
      [:div.Dialogue__npc
       [:p "NPC Name"]
-      (if (:constraint current-flow)
-        [:p (str "\"" (handle-constraint character-state current-flow) "\"")]
+      (if (map? current-flow)
+        (handle-dialogue-map character-state current-flow)
         [:p (first current-flow)])]
      [:div.Dialogue__options
       (get-user-options current-flow)]]))
