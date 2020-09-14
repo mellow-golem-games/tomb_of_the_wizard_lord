@@ -22,7 +22,7 @@
                :stay (list "I'm sure I can scrounge up a room for ya." {:button true :type "inventory" :inv inventory})
                :else (list "Something else I can help you with?" main-options)
                ; second tier options
-               :lumberjacks '("Rumor has it that they found some sort of structure out in the woods, pretty deep out there from what I’ve heard. I’d ask around the mill on the west side of town." {:button true :type "path" :path :rumors-again})
+               :lumberjacks '("Rumor has it that they found some sort of structure out in the woods, pretty deep out there from what I’ve heard. I’d ask around the mill on the west side of town." {:button true :type "path" :quest {:location "town" :id 2 :step 1} :path :rumors-again})
                :danger-woods '("Lots of beasts hang out in these woods; why the lumberjacks travel in groups, safety in numbers they say" {:button true :type "path" :path :rumors-again})
                :town '("Oh there’s always something going on around here. If I was looking for work I’d hang around the market, you must have seen it heading up here. Lots of folk are always around there so there’s bound to be something." {:button true :type "path" :path :rumors-again})
                :end '("Take care" {:button true :type "end"})}})

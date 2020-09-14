@@ -20,6 +20,11 @@
   [action]
   (toggle-sub-view  app-state (:value action)))
 
+; INITIAL STATE stuff
+(defmethod handle-state-change "add-initial-quests"
+  [action]
+  (swap! app-state conj {:quests (:value action)}))
+
 
 
 ; COMBAT FOCUSES METHODS

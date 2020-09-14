@@ -1,5 +1,6 @@
 (ns wizard-lord.services.scripts.dialogue
-  (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]))
+  (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
+            [wizard-lord.services.storage.quests :as quests]))
 ; :constrain
 ;  :visited? true - first :tree  else second tree
 
@@ -7,6 +8,12 @@
 
 
 ; return value
+
+(defn generate-button-on-click [dialogue-tree base-click]
+  "generates additional options on click - takes the base click and comps on any additional functionality"
+  (cond
+    (:quest dialogue-tree) (do (quests/add-new-quest (:location (:quest dialogue-tree)) (:id (:quest dialogue-tree))) (base-click))
+     :else  (base-click)))
 
 (defn inventory-button-handler [dialogue-tree]
   "easier to move it here since we need 2 events called"
@@ -16,7 +23,7 @@
  ;should be a [:div    "text"  _options or next button]
 (defn generate-dialogue-button [dialogue-tree]
   (cond
-    (= (:type dialogue-tree) "path") [:button {:on-click #(handle-state-change {:type "update-dialogue-flow" :value (:path dialogue-tree)})} "Continue"]
+    (= (:type dialogue-tree) "path") [:button {:on-click #(generate-button-on-click dialogue-tree (fn [] (handle-state-change {:type "update-dialogue-flow" :value (:path dialogue-tree)})))} "Continue"]
     (= (:type dialogue-tree) "end") [:button {:on-click #(handle-state-change {:type "close-dialogue" :value nil})} "Continue"]
     (= (:type dialogue-tree) "inventory") [:button {:on-click #(inventory-button-handler dialogue-tree)} "Continue"]))
 

@@ -4,10 +4,11 @@
    [reagent.core :as reagent :refer [atom]]
    [wizard-lord.services.state.global :refer [app-state]]
    [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
+   [wizard-lord.services.storage.storage :refer [initial-load]]
    [wizard-lord.views.main :refer [Main]]
    [wizard-lord.views.combat :refer [Combat]]))
 
-
+(initial-load)
 
 (defn get-app-element []
   (gdom/getElement "app"))

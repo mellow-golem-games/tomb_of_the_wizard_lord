@@ -41,6 +41,7 @@
                           :show-journal false
                           :show-npc-inventory false
                           :npc-inventory nil
+                          :quests {}
                           :combat-view combat-state
                           :explore-view explore-state}))
 
@@ -71,3 +72,7 @@
 
 (defn toggle-sub-view [app-state payload]
   (swap! app-state conj {(keyword (str "show-"(:sub-view payload))) (:value payload)}))
+
+(defn get-from-state [key]
+  "returns the value for a specified key from state"
+  ((keyword key) @app-state))
