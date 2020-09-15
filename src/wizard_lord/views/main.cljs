@@ -47,7 +47,7 @@
      [:div.Main__wrapper
       [Character (:show-character @app-state)]
       [Inventory (:show-inventory @app-state)]
-      [Journal (:show-journal @app-state)]
+      [Journal (:show-journal @app-state) (:quests @app-state)]
       [NPC-Inventory (:show-npc-inventory @app-state) (:npc-inventory @app-state)]
       [:div.Main__wrapper__map
        [:div.Main__wrapper__map__frameWrapper
