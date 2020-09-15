@@ -17,8 +17,6 @@
             (recur (inc step) (conj dom [:p (nth (:steps quest-details) step)]))))
         ])) quest-log))
 
-  ; (print ( get-quest-details (:id (first quest-log)))))
-
 (defn Journal [active quests]
   (let [quest-list (seq quests)] ;turns it into a itterable sequence.
     ; (print quest-list)
