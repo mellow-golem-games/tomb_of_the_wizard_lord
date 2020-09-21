@@ -19,7 +19,6 @@
     (fn [result]
       (let [current-state (js->clj result :keywordize-keys true)]
         (handle-state-change {:type "add-initial-quests" :value (first current-state)})))))
-      ; (print (js->clj result :keywordize-keys true)))))
 
 
 (defn handle-local-save [type value] ; TODO add callback

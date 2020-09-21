@@ -1,0 +1,47 @@
+.Journal {
+  background: url('../images/set/paperTexture.jpg');
+  padding: 25px;
+  box-sizing: border-box;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__questBlock {
+    border: 1px solid black;
+    height: 35px;
+    overflow: hidden;
+
+    &.active {
+      height: auto;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      background-color: black;
+      color: white;
+      padding: 5px;
+      text-transform: capitalize;
+    }
+
+    &__questProgress {
+      padding: 10px 5px;
+
+      h3 {
+        font-size: 1.3rem;
+        padding-bottom: 5px;
+      }
+
+      p {
+        padding: 5px;
+      }
+
+    }
+  }
+}
