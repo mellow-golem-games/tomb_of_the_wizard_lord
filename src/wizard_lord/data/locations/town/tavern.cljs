@@ -12,8 +12,8 @@
          [:p "who gives a brief nod as you enter."]]
    [:div.Location__dialogueWrap
     [:p "Another man is standing on a chair"]
-    [:p.ActionText {:on-click #(open-dialogue-menu 3) :dangerouslySetInnerHTML {:__html "&nbsp; loudly boasting &nbsp;"}}]
-    [:p "to the few patrons that care to listen."]]
+    [:p.ActionText {:on-click #(open-dialogue-menu 3) :dangerouslySetInnerHTML {:__html "&nbsp;loudly boasting &nbsp;"}}]
+    [:p "to the few that care to listen."]]
    [:div.Location__dialogueWrap
     [:p "And a"]
     [:p.ActionText {:on-click #(open-dialogue-menu 2) :dangerouslySetInnerHTML {:__html "&nbsp; man in dark robes&nbsp;"}}]
