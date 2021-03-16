@@ -9,6 +9,7 @@
             [wizard-lord.data.characters.town.town-npcs.cljs :refer [Town-Npcs]]
             [wizard-lord.services.scripts.dialogue :refer [dialogue-generator]]
             [wizard-lord.components.map-marker :refer [MapMarker]]
+            [wizard-lord.components.exit :refer [Exit]]
             [wizard-lord.data.characters.character-handler :refer [get-character-dialogue-details]]
             [wizard-lord.data.locations.locations :refer [get-current-location get-current-location-details]]))
 
@@ -41,7 +42,6 @@
   (let [explore-view (:explore-view @app-state)
         current-view (get-current-location (:current explore-view))
         dialogue (:dialogue @app-state)]
-
     ; (get-current-location-details current-view (:current-location explore-view))
     [:div.Main.Page {:class active}
      [:div.Main__wrapper
@@ -55,9 +55,11 @@
         [Frame]
         [Frame]]
        [:div.Main__wrapper__map__mapContainer {:id "scene"}
+        (for [details (:exits current-view)]
+          [Exit details])
         (for [location (:locations current-view)]
           [MapMarker location])
-        [:img {:src "../images/town.jpg"}]]]
+        [:img {:src (str "../images/"(:main-image (:base current-view))".jpg")}]]]
       [:div.Main__wrapper__container
        (if (:dialogue-active @app-state)
          (dialogue-generator (:character-state dialogue) (get-character-dialogue-details (:character dialogue) (:current explore-view)) (:flow dialogue))

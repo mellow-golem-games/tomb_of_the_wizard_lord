@@ -1,11 +1,12 @@
 (ns wizard-lord.data.locations.locations
-  (:require [wizard-lord.data.locations.town.town :refer [town handle-location-render-town]]))
-
+  (:require [wizard-lord.data.locations.town.town :refer [town handle-location-render-town]]
+            [wizard-lord.data.locations.forest.forest :refer [forest handle-location-render-forest]]))
 
 
 (defn get-current-location [location]
-  (if (= location "town")
-    town))
+  (cond
+    (= location "town") town
+    (= location "forest") forest))
 
 (defn get-current-location-details [loc-name current-view selected-location]
   (if selected-location
