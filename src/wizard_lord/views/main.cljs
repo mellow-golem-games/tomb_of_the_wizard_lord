@@ -37,19 +37,29 @@
 
 (js/setTimeout #(setup-pan) 1000)
 
+(defn play-scene-animation []
+  "does a quick fade when transitioning to a new overworld location"
+  (.add (.-classList (.getElementById js/document "Map-container")) "scene-animator")
+  (js/setTimeout #(.remove (.-classList (.getElementById js/document "Map-container")) "scene-animator") 300))
+
+(defn handle-scene-change [last-view-ref new-scene]
+  (reset! last-view-ref new-scene)
+  (play-scene-animation))
 
 (defn Main [active app-state]
   (let [explore-view (:explore-view @app-state)
         current-view (get-current-location (:current explore-view))
+        last-view (atom "town") ; we use this to handle our new scene setup
         dialogue (:dialogue @app-state)]
-    ; (get-current-location-details current-view (:current-location explore-view))
+    (if (not= @last-view (:current explore-view))
+      (handle-scene-change last-view (:current explore-view)))
     [:div.Main.Page {:class active}
      [:div.Main__wrapper
       [Character (:show-character @app-state)]
       [Inventory (:show-inventory @app-state)]
       [Journal (:show-journal @app-state) (:quests @app-state)]
       [NPC-Inventory (:show-npc-inventory @app-state) (:npc-inventory @app-state)]
-      [:div.Main__wrapper__map
+      [:div.Main__wrapper__map {:id "Map-container"}
        [:div.Main__wrapper__map__frameWrapper
         [Frame]
         [Frame]

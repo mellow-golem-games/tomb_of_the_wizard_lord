@@ -12,6 +12,13 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
+      transition: all .5s;
+      opacity: 1;
+
+      &.scene-animator {
+        opacity: 0;
+      }
+
 
       &__frameWrapper {
         display: flex;
