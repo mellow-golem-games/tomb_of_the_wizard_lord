@@ -35,6 +35,7 @@
                {:name "Thatchers Fabrics" :key :fabrics :x "1700px" :y "1400px"}
                {:name "General Goods" :key :generalGoods :x "875px" :y "600px"}]
    :exits [{:to "forest" :x "500px" :y "50px"}]
+   :fog false
    :tavern {
             :description ["The tavern is dark but cozy and inviting. There's a few patrons, most of them absorbed in their own interests and pay you little mind as you enter."] ; we might have multiple depending on progress
             :characters [{:id 1} {:id 2} {:id 3}]

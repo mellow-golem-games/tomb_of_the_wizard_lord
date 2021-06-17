@@ -10,6 +10,7 @@
             [wizard-lord.services.scripts.dialogue :refer [dialogue-generator]]
             [wizard-lord.components.map-marker :refer [MapMarker]]
             [wizard-lord.components.exit :refer [Exit]]
+            [wizard-lord.components.Fog :refer [Fog]]
             [wizard-lord.data.characters.character-handler :refer [get-character-dialogue-details]]
             [wizard-lord.data.locations.locations :refer [get-current-location get-current-location-details]]))
 
@@ -42,7 +43,8 @@
   (.add (.-classList (.getElementById js/document "Map-container")) "scene-animator")
   (js/setTimeout #(.remove (.-classList (.getElementById js/document "Map-container")) "scene-animator") 300))
 
-(defn handle-scene-change [last-view-ref new-scene]
+(defn handle-scene-change [last-view-ref new-scene position]
+  (.pan ref (:x position) (:y position))
   (reset! last-view-ref new-scene)
   (play-scene-animation))
 
@@ -52,7 +54,7 @@
         last-view (atom "town") ; we use this to handle our new scene setup
         dialogue (:dialogue @app-state)]
     (if (not= @last-view (:current explore-view))
-      (handle-scene-change last-view (:current explore-view)))
+      (handle-scene-change last-view (:current explore-view) (:position current-view)))
     [:div.Main.Page {:class active}
      [:div.Main__wrapper
       [Character (:show-character @app-state)]
@@ -69,7 +71,10 @@
           [Exit details])
         (for [location (:locations current-view)]
           [MapMarker location])
-        [:img {:src (str "../images/"(:main-image (:base current-view))".jpg")}]]]
+        [:img {:src (str "../images/"(:main-image (:base current-view))".jpg")}]
+        (if (:fog current-view)
+          [Fog (:fog @app-state)]
+          nil)]]
       [:div.Main__wrapper__container
        (if (:dialogue-active @app-state)
          (dialogue-generator (:character-state dialogue) (get-character-dialogue-details (:character dialogue) (:current explore-view)) (:flow dialogue))

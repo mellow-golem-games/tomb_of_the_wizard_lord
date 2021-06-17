@@ -10,12 +10,15 @@
 (defn handle-location-render-forest [loc-key location])
 
 
-
 (def forest
   {
+   :position {
+              :x 500
+              :y -1250}
    :base {
           :description (str "You Enter The Forest");every location has a base
           :main-image "forest"}
+   :fog true
    :locations []
    :exits []
    :random-events []})

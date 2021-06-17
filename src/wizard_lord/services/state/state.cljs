@@ -2,6 +2,16 @@
     (:require [reagent.core :as reagent :refer [atom]]
               [wizard-lord.data.characters.town.town-npcs.cljs :refer [Town-Npcs]]))
 
+(def fog-state
+  [[0 0 0 0 0 0 0 0]
+   [0 0 0 0 0 0 0 0]
+   [0 0 0 0 0 0 0 0]
+   [0 0 0 0 0 0 0 0]
+   [0 0 0 0 0 0 0 0]
+   [0 0 0 0 0 0 0 0]
+   [0 0 0 0 0 0 0 0]
+   [0 0 0 0 1 0 0 0]])
+
 
 (def explore-state
   {:current "town"
@@ -42,6 +52,7 @@
                           :show-npc-inventory false
                           :npc-inventory nil
                           :quests {}
+                          :fog fog-state
                           :combat-view combat-state
                           :explore-view explore-state}))
 
