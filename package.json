@@ -2,7 +2,7 @@
   "devDependencies": {
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "node-sass": "^4.7.2"
+    "sass": "^1.35.2"
   },
   "dependencies": {
     "@panzoom/panzoom": "^4.2.0",
@@ -10,6 +10,6 @@
     "react-dom": "^16.13.1"
   },
   "scripts": {
-    "scss": "node-sass --include-path src/wizard_lord/sass/ --watch src/wizard_lord/sass/ -o resources/public/css"
+    "scss": "sass --watch src/wizard_lord/sass/main.scss resources/public/css/main.css"
   }
 }
