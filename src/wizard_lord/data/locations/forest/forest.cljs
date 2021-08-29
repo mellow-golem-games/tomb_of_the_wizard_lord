@@ -13,8 +13,8 @@
 (def forest
   {
    :position {
-              :x 500
-              :y -1250}
+              :x 2000
+              :y -3300}
    :base {
           :description (str "You Enter The Forest");every location has a base
           :main-image "forest"}
@@ -22,8 +22,3 @@
    :locations []
    :exits []
    :random-events []})
-
-
-
-
-

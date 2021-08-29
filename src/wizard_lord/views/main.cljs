@@ -31,7 +31,8 @@
   ;                                             :bounds true})))
 
   ; TODO fix this
-  (js/setTimeout #(.pan ref 0 -1250))
+  (js/setTimeout #(.pan ref 600 -1550))
+  (js/setTimeout #(.zoom ref 0.25))
   (js/setTimeout #(.addEventListener element "wheel" (.-zoomWithWheel ref))))
 
 
@@ -44,7 +45,9 @@
   (js/setTimeout #(.remove (.-classList (.getElementById js/document "Map-container")) "scene-animator") 300))
 
 (defn handle-scene-change [last-view-ref new-scene position]
-  (.pan ref (:x position) (:y position))
+  (.zoom ref 0.5)
+  ; not sure why but the print here fixes a weird bug
+  (js/setTimeout #(do (print "test") (.pan ref (:x position) (:y position))) 100)
   (reset! last-view-ref new-scene)
   (play-scene-animation))
 

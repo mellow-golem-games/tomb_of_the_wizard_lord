@@ -28,6 +28,7 @@
    :base {
           :description (str "You enter the town of " (:name CONFIG) ". It's crappy.");every location has a base
           :main-image "town"}
+   :default-zoom 5
    :locations [{:name "Blue Recluse" :key :tavern  :x "1650px" :y "200px"}
                {:name "Lumber Mill" :key :lumbermill :x "155px" :y "775px"}
                {:name "Town Center" :key :towncenter :x "1350px" :y "600px"}
@@ -56,8 +57,3 @@
 
 
    :random-events []})
-
-
-
-
-
