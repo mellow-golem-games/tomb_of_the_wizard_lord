@@ -25,6 +25,7 @@
 
 (def town
   {
+   :id "Town"
    :base {
           :description (str "You enter the town of " (:name CONFIG) ". It's crappy.");every location has a base
           :main-image "town"}

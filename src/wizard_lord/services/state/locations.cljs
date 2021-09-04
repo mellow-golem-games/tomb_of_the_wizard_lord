@@ -7,3 +7,7 @@
 (defn set-current-location-key [app-state payload]
   "This sets the specific sub-location like a store in town or the camp in forest"
   (swap! app-state update-in [:explore-view :current-location] (fn [_] payload)))
+
+
+(defn set-fog [app-state payload]
+  (swap! app-state conj {:fog payload}))

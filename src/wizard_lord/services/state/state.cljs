@@ -52,7 +52,7 @@
                           :show-npc-inventory false
                           :npc-inventory nil
                           :quests {}
-                          :fog fog-state
+                          :fog nil
                           :combat-view combat-state
                           :explore-view explore-state}))
 

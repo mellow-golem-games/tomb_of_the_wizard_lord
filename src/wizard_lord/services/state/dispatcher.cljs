@@ -3,7 +3,7 @@
             [wizard-lord.services.state.movement :refer [update-move-active handle-character-move update-attack-active handle-reset-character-movement]]
             [wizard-lord.services.state.combat :refer [update-attack-active handle-character-attack handle-reset-character-action-points update-initiative-value]]
             [wizard-lord.services.state.enemy :refer [set-in-progress handle-enemy-move handle-enemy-attack]]
-            [wizard-lord.services.state.locations :refer [set-current-location-key set-overworld-location]]
+            [wizard-lord.services.state.locations :refer [set-current-location-key set-overworld-location set-fog]]
             [wizard-lord.services.state.dialogue :refer [update-dialogue-flow set-dialogue-active set-dialogue-id]]
             [wizard-lord.services.state.textstate :refer [update-state-text]]))
 
@@ -70,6 +70,10 @@
 (defmethod handle-state-change "set-location-key"
   [action]
   (set-current-location-key app-state (:value action)))
+(defmethod handle-state-change "set-fog"
+  [action]
+  (set-fog app-state (:value action)))
+
 
 ;DIALOGUE METHODS
 (defmethod handle-state-change "set-dialogue-active"

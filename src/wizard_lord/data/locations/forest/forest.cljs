@@ -12,13 +12,22 @@
 
 (def forest
   {
+   :type "overworld"
+   :default-positions {:town [0 4]} ; this holds x y coords for the enterance when coming from key
    :position {
               :x 2000
               :y -3300}
+   :fog [[0 0 0 0 0 0 0 0]
+         [0 0 0 0 0 0 0 0]
+         [0 0 0 0 0 0 0 0]
+         [0 0 0 0 0 0 0 0]
+         [0 0 0 0 0 0 0 0]
+         [0 0 0 0 0 0 0 0]
+         [0 1 1 1 1 1 1 0]
+         [1 1 1 1 1 1 1 1]]
    :base {
-          :description (str "You Enter The Forest");every location has a base
+          :description (str "You exit the town along the main road. Ahead of your lies the forest, and the path continues further in. To either side is large open areas that have been cleard of trees.");every location has a base
           :main-image "forest"}
-   :fog true
    :locations []
    :exits []
    :random-events []})

@@ -44,20 +44,25 @@
   (.add (.-classList (.getElementById js/document "Map-container")) "scene-animator")
   (js/setTimeout #(.remove (.-classList (.getElementById js/document "Map-container")) "scene-animator") 300))
 
-(defn handle-scene-change [last-view-ref new-scene position]
-  (.zoom ref 0.5)
-  ; not sure why but the print here fixes a weird bug
-  (js/setTimeout #(do (print "test") (.pan ref (:x position) (:y position))) 100)
-  (reset! last-view-ref new-scene)
-  (play-scene-animation))
+(defn handle-scene-change [last-view-ref new-scene current-view]
+  (let [position (:position current-view)]
+    (.zoom ref 0.5)
+    ; not sure why but the print here fixes a weird bug
+    (js/setTimeout #(do (print "test") (.pan ref (:x position) (:y position))) 100)
+
+    ;; TODO handle a saved fog state here - need to pull that and store it somewhere
+    (handle-state-change {:type "set-fog" :value (:fog current-view)})
+    (reset! last-view-ref new-scene)
+    (play-scene-animation)))
 
 (defn Main [active app-state]
   (let [explore-view (:explore-view @app-state)
         current-view (get-current-location (:current explore-view))
         last-view (atom "town") ; we use this to handle our new scene setup
-        dialogue (:dialogue @app-state)]
+        dialogue (:dialogue @app-state)
+        current-fog-level (:fog @app-state)]
     (if (not= @last-view (:current explore-view))
-      (handle-scene-change last-view (:current explore-view) (:position current-view)))
+      (handle-scene-change last-view (:current explore-view) current-view))
     [:div.Main.Page {:class active}
      [:div.Main__wrapper
       [Character (:show-character @app-state)]
@@ -75,8 +80,8 @@
         (for [location (:locations current-view)]
           [MapMarker location])
         [:img {:src (str "../images/"(:main-image (:base current-view))".jpg")}]
-        (if (:fog current-view)
-          [Fog (:fog @app-state)]
+        (if current-fog-level
+          [Fog current-fog-level]
           nil)]]
       [:div.Main__wrapper__container
        (if (:dialogue-active @app-state)
