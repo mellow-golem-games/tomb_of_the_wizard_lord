@@ -11,5 +11,6 @@
 (defn get-current-location-details [loc-name current-view selected-location]
   (if selected-location
     (cond
-      (= loc-name "town") (handle-location-render-town selected-location ((keyword selected-location) current-view)))
+      (= loc-name "town") (handle-location-render-town selected-location ((keyword selected-location) current-view))
+      (= loc-name "forest") (handle-location-render-forest selected-location ((keyword selected-location) current-view)))
     nil))

@@ -89,5 +89,5 @@
          (if (:current-location explore-view) ; Dont show on dialogue
            ; [:p (str "You are in a location with the key: " (:current-location explore-view))]
            (get-current-location-details (:current explore-view) current-view (:current-location explore-view))
-           [:p (:description (:base current-view))]))
+           (:description (:base current-view))))
        [Options-bar]]]]))
