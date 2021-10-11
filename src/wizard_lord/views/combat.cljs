@@ -79,6 +79,9 @@
   (if (not (:enemy-turn-in-progress combat-state))
     (do-enemy-turn combat-state)))
 
+(defn handle-enemy-death [enemy]
+  (handle-state-change {:type "kill-enemy" :value (:id enemy)}))
+
 (defn Combat [active app-state]
   (let [character (first (filter #(= (:id %) (:current-initiative (:combat-view @app-state))) (:players (:combat-view @app-state))))
         combat-state (:combat-view @app-state)]
@@ -91,7 +94,9 @@
         (doall (for [player (:players (:combat-view @app-state))]
                  ^{:key (:id player)} [Player player (:combat-view @app-state)]))
         (doall (for [enemy (:enemies (:combat-view @app-state))]
-                 ^{:key (:id enemy)} [Enemy enemy (:combat-view @app-state)]))]]]
+                  (if (= (-> enemy :character :health) 0)
+                   (handle-enemy-death enemy)
+                   ^{:key (:id enemy)} [Enemy enemy (:combat-view @app-state)])))]]]
      [:div.Combat__history.Combat__Section
       (if (is-enemy-turn? (:current-initiative combat-state) (:enemies combat-state))
         (do
@@ -106,4 +111,3 @@
       [:button {:on-click #(handle-end-turn character)} "End Turn"]
       [:p (str "Action Points " (:remaining-action-points (:character character)) " of " (:max-action-points (:character character)))]
       [:h2 "This is the history of rolls and such"]]]))
-

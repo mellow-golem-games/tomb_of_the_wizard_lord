@@ -42,8 +42,8 @@
 ; initial rep of our overall state- it's not striclty neccessary to build it out like this
 ; but I like to as it's a good place to reference all my current state options.
 (defonce app-state (atom {
-                          :active-page {:main-view "active"
-                                        :combat-view false}
+                          :active-page {:main-view false ; "active"
+                                        :combat-view "active"}
                           :dialogue-active false
                           :dialogue dialogue-state
                           :show-inventory false

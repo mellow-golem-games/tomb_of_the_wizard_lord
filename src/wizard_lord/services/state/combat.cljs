@@ -1,6 +1,11 @@
 (ns wizard-lord.services.state.combat
   (:require [wizard-lord.services.scripts.attacks :refer [resolve-attack-damage]]))
 
+(defn remove-enemy-from-state
+  "Removes enemy from combat state by id"
+  [enemies enemyId]
+  (remove #(= (:id %) enemyId) enemies))
+
 (defn set-damage-to-enemy [enemies character enemyId] ; we can turn  tis into a vector for AOE maybe?
   (map (fn [enemy]
          (if (= (:id enemy) enemyId)
@@ -24,6 +29,9 @@
 
 (defn update-attack-active [app-state payload]
   (swap! app-state update-in [:combat-view :attack-active] (fn [_] payload)))
+
+(defn handle-enemy-death [app-state payload]
+  (swap! app-state update-in [:combat-view :enemies] remove-enemy-from-state payload))
 
 (defn handle-character-attack [app-state payload]
   "Payload: {:id to damage}"

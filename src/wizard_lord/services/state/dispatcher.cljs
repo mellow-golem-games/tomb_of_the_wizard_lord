@@ -1,7 +1,7 @@
 (ns wizard-lord.services.state.dispatcher
   (:require [wizard-lord.services.state.global :refer [app-state update-active-view toggle-sub-view handle-open-npc-inventory]]
             [wizard-lord.services.state.movement :refer [update-move-active handle-character-move update-attack-active handle-reset-character-movement]]
-            [wizard-lord.services.state.combat :refer [update-attack-active handle-character-attack handle-reset-character-action-points update-initiative-value]]
+            [wizard-lord.services.state.combat :refer [update-attack-active handle-character-attack handle-reset-character-action-points update-initiative-value handle-enemy-death]]
             [wizard-lord.services.state.enemy :refer [set-in-progress handle-enemy-move handle-enemy-attack]]
             [wizard-lord.services.state.locations :refer [set-current-location-key set-overworld-location set-fog]]
             [wizard-lord.services.state.dialogue :refer [update-dialogue-flow set-dialogue-active set-dialogue-id]]
@@ -53,7 +53,9 @@
 (defmethod handle-state-change "set-enemey-turn-in-progress"
   [action]
   (set-in-progress app-state (:value action)))
-
+(defmethod handle-state-change "kill-enemy"
+  [action]
+  (handle-enemy-death app-state (:value action)))
 
 ; END TURN STUFF
 (defmethod handle-state-change "handle-end-turn"
