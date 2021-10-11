@@ -2,14 +2,20 @@
   (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
             [wizard-lord.services.scripts.scene :as scene]))
 
+(def ENEMY [{:id 2 :x 2 :y 2 :character {:move 20 :remaining 20 :max-health 10 :health 10 :defence 10 :attack 5}}])
+
 (defn is-random-encounter []
   ; 50/50
   (= (rand-int 2) 1))
 
+(defn enter-combat-state [enemy]
+  (scene/enter-combat-state enemy)
+  (handle-state-change {:type "set-location-key" :value nil}))
+
 (defn random-true-block []
   [:div
    [:p "As you search, you heard a sound from a nearby tree stump. As you go to investigate a group of giant beatles surges forward."]
-   [:p {:on-click #(scene/enter-combat-state)} "Prepare for battle!"]])
+   [:p {:on-click #(enter-combat-state ENEMY)} "Prepare for battle!"]])
 
 (defn random-false-block []
   [:div

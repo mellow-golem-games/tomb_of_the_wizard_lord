@@ -22,7 +22,7 @@
   {:players [{:id 1 :x 0 :y 0
               :character {:move 20 :remaining 20 :max-health 50  :health 50 :defence 5 :attack 15 :max-action-points 2 :remaining-action-points 2}
               :actions {:attack {:range 5 :cost 1}}}]; we will probably break out this character to prevent multi-references
-   :enemies [{:id 2 :x 2 :y 2 :character {:move 20 :remaining 20 :max-health 10 :health 10 :defence 10 :attack 5}}]
+   :enemies []
    :initiative-order [1 2]
    :current-initiative 1
    :move-active false
@@ -42,8 +42,8 @@
 ; initial rep of our overall state- it's not striclty neccessary to build it out like this
 ; but I like to as it's a good place to reference all my current state options.
 (defonce app-state (atom {
-                          :active-page {:main-view false ; "active"
-                                        :combat-view "active"}
+                          :active-page {:main-view "active" ; "active"
+                                        :combat-view false}
                           :dialogue-active false
                           :dialogue dialogue-state
                           :show-inventory false

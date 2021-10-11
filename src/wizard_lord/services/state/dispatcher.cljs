@@ -28,6 +28,12 @@
 
 
 ; COMBAT FOCUSES METHODS
+
+;This first group focuses on setting up a combat scence
+(defmethod handle-state-change "set-initial-enemies"
+  [action]
+  (swap! app-state assoc-in [:combat-view :enemies] (:value action)))
+
 (defmethod handle-state-change "update-move-active"
   [action]
   (update-move-active app-state (:value action)))
