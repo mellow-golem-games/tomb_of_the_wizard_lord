@@ -9,7 +9,8 @@
             [wizard-lord.components.combat.player :refer [Player]]
             [wizard-lord.components.combat.enemy :refer [Enemy]]
             [wizard-lord.data.battlemats.generic :refer [generic-battlemat]]
-            [wizard-lord.services.state.initiative :refer [handle-end-turn]]))
+            [wizard-lord.services.state.initiative :refer [handle-end-turn]]
+            [wizard-lord.components.combat.end :as End]))
 
 
 (defn get-moveable-grid [x y combat-state]
@@ -84,7 +85,8 @@
 
 (defn Combat [active app-state]
   (let [character (first (filter #(= (:id %) (:current-initiative (:combat-view @app-state))) (:players (:combat-view @app-state))))
-        combat-state (:combat-view @app-state)]
+        combat-state (:combat-view @app-state)
+        enemies (:enemies (:combat-view @app-state))]
     [:div.Combat.Page {:class active}
      [:div.Combat__view.Combat__section
       [:div.Combat__view__inner
@@ -93,10 +95,12 @@
           row)
         (doall (for [player (:players (:combat-view @app-state))]
                  ^{:key (:id player)} [Player player (:combat-view @app-state)]))
-        (doall (for [enemy (:enemies (:combat-view @app-state))]
-                  (if (= (-> enemy :character :health) 0)
-                   (handle-enemy-death enemy)
-                   ^{:key (:id enemy)} [Enemy enemy (:combat-view @app-state)])))]]]
+        (if (> (count enemies) 0)
+          (doall (for [enemy enemies]
+                    (if (= (-> enemy :character :health) 0)
+                     (handle-enemy-death enemy)
+                     ^{:key (:id enemy)} [Enemy enemy (:combat-view @app-state)])))
+          (End/VictoryCard))]]]
      [:div.Combat__history.Combat__Section
       (if (is-enemy-turn? (:current-initiative combat-state) (:enemies combat-state))
         (do
