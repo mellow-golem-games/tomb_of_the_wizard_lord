@@ -12,5 +12,9 @@
 ;   Enemy
 ;   (attack [_] "Handles a Troll attack"))
 
-
-
+(defn add-combat-fields
+  "this adds extra fields that are need to handle combat - they are just duplicates of existing ones"
+  [enemy]
+  (conj enemy
+    {:remaining (:movement enemy)
+     :max-health (:health enemy)}))

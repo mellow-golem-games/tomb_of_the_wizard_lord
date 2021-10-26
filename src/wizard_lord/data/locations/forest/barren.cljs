@@ -1,8 +1,9 @@
 (ns wizard-lord.data.locations.forest.barren
   (:require [wizard-lord.services.state.dispatcher :refer [handle-state-change]]
-            [wizard-lord.services.scripts.scene :as scene]))
+            [wizard-lord.services.scripts.scene :as scene]
+            [wizard-lord.data.enemies.orc :refer [create-orc]]))
 
-(def ENEMY [{:id 2 :x 2 :y 2 :character {:move 20 :remaining 20 :max-health 10 :health 10 :defence 10 :attack 5}}])
+(def ENEMY [{:id 2 :x 2 :y 2 :character (create-orc)}])
 
 (defn is-random-encounter []
   ; 50/50
