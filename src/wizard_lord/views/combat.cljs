@@ -71,9 +71,9 @@
         spotToMove (get-near-player-spot closestPlayer)]
     (handle-state-change {:type "handle-enemy-move" :value (conj spotToMove {:id (:id enemy)})})
     (handle-state-change {:type "handle-enemy-attack" :value {:enemy enemy :id (:id closestPlayer)}})
-    #(handle-end-turn enemy)
+
     ; we'll use a timeout for now to simulate time, but we should probably come up with a better system for this
-    (js/setTimeout #((handle-state-change {:type "set-enemey-turn-in-progress" :value false})) 1000)))
+    (js/setTimeout #(do (handle-end-turn enemy) (handle-state-change {:type "set-enemey-turn-in-progress" :value false})) 1000)))
 
 
 (defn start-enemy-turn [combat-state]
@@ -88,6 +88,10 @@
         combat-state (:combat-view @app-state)
         enemies (:enemies (:combat-view @app-state))]
     [:div.Combat.Page {:class active}
+     [:div {:style {:padding "15px"}}
+      (if (is-enemy-turn? (:current-initiative combat-state) (:enemies combat-state))
+       [:h3 {:style {:color "white"}} "Enemy Turn"]
+       [:h3 {:style {:color "white"}}  "Your Turn"])]
      [:div.Combat__view.Combat__section
       [:div.Combat__view__inner
        [:div.Combat__view__inner__container {:style (generate-combat-holder-size currentMat) :on-click #(handle-grid-click (.-target %)(:combat-view @app-state))}
